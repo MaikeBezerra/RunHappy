@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
         android:paddingTop="20dp"
-        android:paddingRight="@dimen/activity_vertical_margin">
+        android:paddingEnd="@dimen/activity_vertical_margin">
 
         <TextView
             android:id="@+id/textTitle"
@@ -34,11 +34,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#2196F3"
-            android:drawableLeft="@drawable/facebook"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:drawableStart="@drawable/facebook"
+            android:drawingCacheQuality="auto"
+            android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingTop="18dp"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:text="Entrar com o Facebook"
+            android:paddingEnd="@dimen/activity_vertical_margin"
+            android:text="@string/facebook_entrar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -69,8 +70,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/nome_obrigatorio"
-            android:autofillHints="" tools:targetApi="o" />
+            android:text="@string/nome_obrigatorio" />
 
         <EditText
             android:id="@+id/edtEmail"
@@ -86,7 +86,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Senha" />
+            android:text="Senha"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/edtNascimento"
@@ -106,16 +107,16 @@
                 android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/masculino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Masculino" />
+                    android:text="@string/sexo_masculino" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/feminino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Feminino" />
+                    android:text="@string/sexo_feminino" />
             </LinearLayout>
         </LinearLayout>
 
