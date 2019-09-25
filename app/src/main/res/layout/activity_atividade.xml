@@ -9,11 +9,23 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/distancia2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="0,00"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/distancia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="time"
-            android:text="TextView" />
+            android:inputType="text"
+            android:text="Distância"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
