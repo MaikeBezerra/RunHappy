@@ -108,13 +108,13 @@
                 android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/Masculino"
+                    android:id="@+id/masculino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sexo_masculino" />
 
                 <RadioButton
-                    android:id="@+id/Feminino"
+                    android:id="@+id/feminino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sexo_feminino" />

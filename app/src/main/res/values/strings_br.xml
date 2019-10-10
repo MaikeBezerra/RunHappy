@@ -3,6 +3,6 @@
     <string name="nome_obrigatorio">Nome*</string>
     <string name="facebook_entrar">Entre com o Facebook</string>
 
-    <string name="sexo_masculino">masculino</string>
-    <string name="sexo_feminino">feminino</string>
+    <string name="sexo_masculino">Masculino</string>
+    <string name="sexo_feminino">Feminino</string>
 </resources>
