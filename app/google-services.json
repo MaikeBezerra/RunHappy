@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "525733197534",
+    "firebase_url": "https://run-happy-9e960.firebaseio.com",
+    "project_id": "run-happy-9e960",
+    "storage_bucket": "run-happy-9e960.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525733197534:android:e868486cd6d30e6141344f",
+        "android_client_info": {
+          "package_name": "com.example.runhappy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525733197534-3kpe2j47jg6d0b0j245v6bpt2eod4ors.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIh7rCu9_WQAHb2DmulzLq55Aa5RmYRbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525733197534-3kpe2j47jg6d0b0j245v6bpt2eod4ors.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
