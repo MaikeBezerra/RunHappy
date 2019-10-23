@@ -31,4 +31,6 @@
     <string name="menu_historico">Histórico</string>
     <string name="menu_sair">Sair</string>
     <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">506782173445913</string>
+    <string name="fb_login_protocol_scheme">fb506782173445913</string>
 </resources>
