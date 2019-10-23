@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "525733197534-3gui6smaktub44ngnal3einvvrb103rj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.runhappy",
+            "certificate_hash": "44cb682be3bcb9efc65d979ff5c145e4e0fcc11e"
+          }
+        },
+        {
           "client_id": "525733197534-3kpe2j47jg6d0b0j245v6bpt2eod4ors.apps.googleusercontent.com",
           "client_type": 3
         }
