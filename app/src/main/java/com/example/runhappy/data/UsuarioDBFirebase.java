@@ -1,23 +1,17 @@
 package com.example.runhappy.data;
 
-import android.content.Context;
-
 import com.example.runhappy.model.Usuario;
-import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class UsuarioDBFirebase implements UsuarioDAO {
 
-    private FirebaseAnalytics firebaseAnalytics;
-
-    public UsuarioDBFirebase(Context context){
-        this.firebaseAnalytics = FirebaseAnalytics.getInstance(context);
-    }
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
     public void addUsuario(Usuario usuario) {
-        
+
     }
 
     @Override
