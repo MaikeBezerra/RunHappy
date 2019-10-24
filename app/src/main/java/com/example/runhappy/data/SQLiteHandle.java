@@ -24,9 +24,11 @@ public class SQLiteHandle extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 //        if (oldVersion < newVersion) {
-            String sql = "DROP TABLE IF EXISTS usuario";
-            db.execSQL(sql);
-            onCreate(db);
+        String sql = "DROP TABLE IF EXISTS usuario";
+        db.execSQL(sql);
+        onCreate(db);
 //        }
     }
+
+
 }

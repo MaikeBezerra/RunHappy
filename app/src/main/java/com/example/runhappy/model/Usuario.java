@@ -12,15 +12,15 @@ public class Usuario {
 
     public Usuario(){}
 
-    public Usuario(String nome, String email, String senha, Date dataNacimento){
+    public Usuario(String nome, String email, String senha){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.dataNacimento = dataNacimento;
+       // this.dataNacimento = dataNacimento;
     }
 
-    public Usuario(Integer id, String nome, String email, String senha, Date dataNacimento){
-        this(nome, email, senha, dataNacimento);
+    public Usuario(Integer id, String nome, String email, String senha){
+        this(nome, email, senha);
         this.id = id;
     }
 
@@ -54,5 +54,13 @@ public class Usuario {
 
     public void setDataNacimento(Date dataNacimento) {
         this.dataNacimento = dataNacimento;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
