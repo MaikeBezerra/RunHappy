@@ -12,13 +12,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< Updated upstream
-        setContentView(R.layout.activity_login);
-=======
         setContentView(R.layout.activity_tela_inicial);
->>>>>>> Stashed changes
 
-        Button cadastrar = (Button) findViewById(R.id.botao_cadastre_se);
+       // Button cadastrar = (Button) findViewById(R.id.botao_cadastre_se);
 
     }
 
