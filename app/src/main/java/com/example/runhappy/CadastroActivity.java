@@ -29,6 +29,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void cadastrar(View view) {
+
         SQLiteHandle handler = new SQLiteHandle(this);
         UsuarioDAOSQLite db = new UsuarioDAOSQLite(handler);
 
