@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.runhappy.data.SQLiteHandle;
-import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.data.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -17,24 +17,28 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText email;
     private EditText senha;
 
+    private UsuarioAuth usuarioAuth;
+    private UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+        setTitle("Cadastro");
 
-        nome = (EditText) findViewById(R.id.edtNome);
-        email = (EditText) findViewById(R.id.edtEmail);
-        senha = (EditText) findViewById(R.id.edtSenha);
+        usuarioAuth = UsuarioFirebaseAuth.getInstance(this);
+        usuarioDAO = UsuarioDBFirebase.getInstance();
+
+        nome = findViewById(R.id.edtNome);
+        email = findViewById(R.id.edtEmail);
+        senha = findViewById(R.id.edtSenha);
     }
 
     public void cadastrar(View view) {
+        Usuario usuario = new Usuario(nome.getText().toString(), email.getText().toString(), "");
 
-        SQLiteHandle handler = new SQLiteHandle(this);
-        UsuarioDAOSQLite db = new UsuarioDAOSQLite(handler);
-
-        Usuario usuario = new Usuario(nome.getText().toString(), email.getText().toString(), senha.getText().toString());
-        db.addUsuario(usuario);
+        usuarioAuth.registrar(email.getText().toString(), senha.getText().toString());
+        usuarioDAO.addUsuario(usuario);
 
         Intent telaInicial = new Intent(this, TelaInicialActivity.class);
         startActivity(telaInicial);
