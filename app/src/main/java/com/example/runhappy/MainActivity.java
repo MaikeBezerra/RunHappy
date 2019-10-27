@@ -7,12 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
+
+    private UsuarioAuth usuarioAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boas_vindas);
+
+        usuarioAuth = UsuarioFirebaseAuth.getInstance(this);
+        if (usuarioAuth.isAutenticado()) {
+            startActivity(new Intent(getApplicationContext(), TelaInicialActivity.class));
+        }
     }
 
     public void cadastrar(View view){
