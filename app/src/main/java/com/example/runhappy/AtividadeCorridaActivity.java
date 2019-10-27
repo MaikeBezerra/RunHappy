@@ -1,5 +1,6 @@
 package com.example.runhappy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -22,6 +23,9 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
     private boolean estaContando;
     private Button pause;
     private Button bandeira;
+    private double distancia;
+    private long tempo;
+    private double ritmoMedio;
 
 
 
@@ -36,6 +40,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         pause = (Button) findViewById(R.id.botao_pausar);
         bandeira = (Button) findViewById(R.id.botao_bandeira);
         bandeira.setVisibility(View.INVISIBLE);
+        ritmoMedio = 0;
 
         chronometer.setBase(SystemClock.elapsedRealtime() - milisegundos);
         chronometer.start();
@@ -56,5 +61,16 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         }
 
     }
+
+    public void finalizarCorrida(View view){
+        tempo = milisegundos;
+        Intent finalizar = new Intent(this, FinalizarCorridaActivity.class);
+        finalizar.putExtra("tempo", tempo);
+        finalizar.putExtra("distancia", distancia);
+        finalizar.putExtra("ritmoMedio", ritmoMedio);
+        startActivity(finalizar);
+    }
+
+
 
 }

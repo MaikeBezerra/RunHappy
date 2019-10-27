@@ -27,7 +27,7 @@
             android:id="@+id/fragment2"
             android:name="com.example.runhappy.MapsActivity"
             android:layout_width="match_parent"
-            android:layout_height="398dp" />
+            android:layout_height="504dp" />
 
         <Button
             android:id="@+id/angry_btn"
