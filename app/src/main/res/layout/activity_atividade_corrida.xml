@@ -178,6 +178,7 @@
             android:background="@drawable/botao_bandeira"
             android:backgroundTint="#00FFFFFF"
             android:foreground="@drawable/bandeira"
+            android:onClick="finalizarCorrida"
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5" />

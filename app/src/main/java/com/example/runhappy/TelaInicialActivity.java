@@ -1,6 +1,5 @@
 package com.example.runhappy;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -16,8 +15,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
 public class TelaInicialActivity extends AppCompatActivity {
@@ -59,10 +56,4 @@ public class TelaInicialActivity extends AppCompatActivity {
 
         }
     }
-
-    public void iniciar(View view) {
-        Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
-        startActivity(telaCorrida);
-    }
-
 }
