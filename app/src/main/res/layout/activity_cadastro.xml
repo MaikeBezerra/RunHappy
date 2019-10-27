@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".CadastroActivity">
 
@@ -30,16 +31,18 @@
 
         <Button
             android:id="@+id/facebook"
-            android:layout_width="386dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#2196F3"
             android:drawableStart="@drawable/facebook"
             android:drawingCacheQuality="auto"
+            android:foregroundGravity="center"
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingTop="18dp"
             android:paddingEnd="@dimen/activity_vertical_margin"
             android:text="@string/facebook_entrar"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -69,25 +72,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/nome_obrigatorio" />
+            android:hint="@string/nome_obrigatorio"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="E-mail*" />
+            android:hint="E-mail*"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edtSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="Senha"
-            android:importantForAutofill="no" />
+            android:hint="Senha*"
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/edtNascimento"
@@ -102,7 +105,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -117,13 +120,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sexo_feminino" />
-            </LinearLayout>
+            </RadioGroup>
+
         </LinearLayout>
 
         <Button
             android:id="@+id/entrar"
-            android:layout_width="380dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cadastrar"
             android:text="Cadastre-se" />
     </LinearLayout>
 

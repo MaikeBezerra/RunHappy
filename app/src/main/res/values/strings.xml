@@ -12,6 +12,7 @@
     <string name="btn_cadastrese">"Cadastre-se"</string>
     <string name="cadastre_se">Cadastre-se</string>
     <string name="login">Login</string>
+    <string name="pausar">Pausar</string>
     <string name="title_activity_tela_inicial">TelaInicialActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -31,4 +32,6 @@
     <string name="menu_historico">Histórico</string>
     <string name="menu_sair">Sair</string>
     <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">506782173445913</string>
+    <string name="fb_login_protocol_scheme">fb506782173445913</string>
 </resources>
