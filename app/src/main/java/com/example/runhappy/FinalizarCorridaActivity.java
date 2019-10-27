@@ -60,7 +60,7 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
 
         // a fazer: método de cadastrar a corrida feita
 
-
+        setResult(1);
 
         finish();
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".CadastroActivity">
 
@@ -36,6 +37,7 @@
             android:backgroundTint="#2196F3"
             android:drawableStart="@drawable/facebook"
             android:drawingCacheQuality="auto"
+            android:foregroundGravity="center"
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingTop="18dp"
             android:paddingEnd="@dimen/activity_vertical_margin"
@@ -70,25 +72,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/nome_obrigatorio" />
+            android:hint="@string/nome_obrigatorio"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="E-mail*" />
+            android:hint="E-mail*"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edtSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="Senha"
-            android:importantForAutofill="no" />
+            android:hint="Senha*"
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/edtNascimento"

@@ -15,18 +15,20 @@
         android:layout_gravity="fill"
         android:gravity="end"
         android:orientation="vertical"
-        android:paddingTop="@dimen/nav_header_vertical_spacing">
+        android:paddingStart="@dimen/browser_actions_context_menu_min_padding"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingEnd="@dimen/browser_actions_context_menu_min_padding">
 
         <Button
 
             android:id="@+id/botao_cadastre_se"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:onClick="cadastrar"
             android:layout_gravity="center"
             android:background="@drawable/botao_cadastre"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:onClick="cadastrar"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -42,7 +44,9 @@
         android:layout_gravity="bottom"
         android:gravity="bottom"
         android:orientation="vertical"
+        android:paddingStart="@dimen/browser_actions_context_menu_min_padding"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingEnd="@dimen/browser_actions_context_menu_min_padding"
         android:paddingBottom="@dimen/fab_margin">
 
         <Button
@@ -53,6 +57,7 @@
             android:layout_gravity="center"
             android:background="@drawable/botao_login"
             android:fontFamily="sans-serif"
+            android:onClick="logar"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
