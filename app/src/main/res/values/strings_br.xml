@@ -5,4 +5,7 @@
 
     <string name="sexo_masculino">Masculino</string>
     <string name="sexo_feminino">Feminino</string>
+    <string name="menu_item_usuario">Conta</string>
+    <string name="abrir_drawer">Abrindo o drawer</string>
+    <string name="fechar_drawer">Fechando o drawer</string>
 </resources>

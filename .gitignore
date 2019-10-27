@@ -1,4 +1,6 @@
 *.iml
+*.bin
+*.lock
 .gradle
 .idea
 local.properties
