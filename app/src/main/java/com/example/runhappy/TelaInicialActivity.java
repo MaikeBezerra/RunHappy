@@ -1,5 +1,6 @@
 package com.example.runhappy;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
 public class TelaInicialActivity extends AppCompatActivity {
@@ -29,17 +31,11 @@ public class TelaInicialActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicial);
+        setContentView(R.layout.activity_main_frame);
 
         LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new UsuarioLocationListener(this, this, manager);
         locationListener.getLocation();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.tela_inicial, menu);
-        return true;
     }
 
     @Override
@@ -62,6 +58,11 @@ public class TelaInicialActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    public void iniciar(View view) {
+        Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
+        startActivity(telaCorrida);
     }
 
 }
