@@ -48,8 +48,4 @@ public class LoginPrincipalActivity extends AppCompatActivity {
         }
     }
 
-    public void iniciar(View view) {
-        Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
-        startActivity(telaCorrida);
-    }
 }
