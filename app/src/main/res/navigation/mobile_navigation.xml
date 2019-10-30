@@ -9,13 +9,23 @@
         android:id="@+id/nav_correr"
         android:name="com.example.runhappy.ui.home.HomeFragment"
         android:label="@string/menu_correr"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_correr_to_nav_gallery"
+            app:destination="@id/nav_historico" />
+        <action
+            android:id="@+id/action_nav_correr_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
+        <action
+            android:id="@+id/action_nav_correr_to_nav_tools2"
+            app:destination="@id/nav_tools" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_historico"
         android:name="com.example.runhappy.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:label="@string/menu_historico"
+        tools:layout="@layout/fragment_historico" />
 
     <fragment
         android:id="@+id/nav_slideshow"

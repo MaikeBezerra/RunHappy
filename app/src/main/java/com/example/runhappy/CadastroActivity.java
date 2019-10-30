@@ -44,8 +44,8 @@ public class CadastroActivity extends AppCompatActivity {
 
         //usuarioAuth.registrar(email.getText().toString(), senha.getText().toString());
         usuarioDAO.addUsuario(usuario);
-
         Intent telaInicial = new Intent(this, TelaInicialActivity.class);
+        telaInicial.putExtra("nomeUsuario", usuario.getNome());
         startActivity(telaInicial);
     }
 

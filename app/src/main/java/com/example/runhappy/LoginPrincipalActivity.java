@@ -41,6 +41,8 @@ public class LoginPrincipalActivity extends AppCompatActivity {
 
         if (usuario != null && usuario.getSenha().equals(senha.getText().toString())){
             Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
+            System.out.println(usuario.getNome());
+            telaInicial.putExtra("nomeUsuario", usuario.getNome());
             startActivity(telaInicial);
         } else {
 

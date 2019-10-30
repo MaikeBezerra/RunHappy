@@ -1,4 +1,4 @@
-package com.example.runhappy.ui.gallery;
+package com.example.runhappy.ui.historico;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.runhappy.R;
 
-public class GalleryFragment extends Fragment {
+public class HistoricoFragment extends Fragment {
 
     private HistoricoViewModel historicoViewModel;
 
@@ -22,7 +22,7 @@ public class GalleryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         historicoViewModel =
                 ViewModelProviders.of(this).get(HistoricoViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_historico, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         historicoViewModel.getText().observe(this, new Observer<String>() {
             @Override

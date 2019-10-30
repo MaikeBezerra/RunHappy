@@ -19,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TelaInicialActivity extends AppCompatActivity {
@@ -30,11 +31,24 @@ public class TelaInicialActivity extends AppCompatActivity {
     private DrawerLayout layout;
     private UsuarioLocationListener locationListener;
 
+    TextView nome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
         setTitle("Run Happy");
+
+
+//        if (getIntent().getExtras() != null) {
+//            setContentView(R.layout.nav_header_tela_inicial);
+//            nome = (TextView) findViewById(R.id.nomeUsuario);
+//            String nomeUsuario = (String) getIntent().getExtras().get("nomeUsuario");
+//            System.out.println("aquiii"+nomeUsuario+nome.getText().toString());
+//            nome.setText(nomeUsuario);
+//            setContentView(R.layout.activity_tela_inicial);
+//        }
+
 
         toolbar = findViewById(R.id.toolbar);
         this.setSupportActionBar(toolbar);
@@ -75,4 +89,11 @@ public class TelaInicialActivity extends AppCompatActivity {
         Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
         startActivity(telaCorrida);
     }
+
+    public void sair(View view){
+        //fazer logout corretamente
+
+        finish();
+    }
+
 }
