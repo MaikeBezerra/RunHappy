@@ -55,6 +55,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         Cursor cursor = db.query("usuario", new  String[] {"id", "nome", "email", "senha"},
                 "id = ?", new String[] {String.valueOf(usuarioId)}, null, null, null, null);
 
+
         if (cursor.moveToFirst()){
             Usuario usuario = new Usuario(cursor.getInt(0), cursor.getString(1),
                     cursor.getString(2), cursor.getString(3));
