@@ -28,11 +28,11 @@ public class TelaInicialActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_frame);
+        setContentView(R.layout.activity_tela_inicial);
 
-        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener = new UsuarioLocationListener(this, this, manager);
-        locationListener.getLocation();
+//        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//        locationListener = new UsuarioLocationListener(this, this, manager);
+//        locationListener.getLocation();
     }
 
     @Override

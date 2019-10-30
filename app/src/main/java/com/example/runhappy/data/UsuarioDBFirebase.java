@@ -12,6 +12,8 @@ import java.util.List;
 
 public class UsuarioDBFirebase implements UsuarioDAO {
 
+    public static final String COLECAO = "usuarios";
+
     private FirebaseFirestore firestore;
     private static UsuarioDBFirebase instance;
 
@@ -28,9 +30,9 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
-    public void addUsuario(final Usuario usuario) {
+    public void addUsuario(Usuario usuario) {
         firestore
-                .collection("usuarios")
+                .collection(COLECAO)
                 .add(usuario)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -58,6 +60,11 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public Usuario getUsuario(int usuarioId) {
+        return null;
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
         return null;
     }
 
