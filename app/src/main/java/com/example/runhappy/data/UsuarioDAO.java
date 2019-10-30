@@ -14,5 +14,7 @@ public interface UsuarioDAO {
 
     Usuario getUsuario( int usuarioId);
 
+    Usuario findByEmail(String email);
+
     List<Usuario> findAll();
 }

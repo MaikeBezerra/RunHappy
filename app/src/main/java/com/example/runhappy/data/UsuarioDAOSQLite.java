@@ -57,7 +57,22 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
 
         if (cursor != null){
             cursor.moveToFirst();
-            Usuario usuario = new Usuario(cursor.getInt(0), cursor.getString(2),
+            Usuario usuario = new Usuario(cursor.getInt(0), cursor.getString(1),
+                    cursor.getString(2), cursor.getString(3));
+            return usuario;
+        }
+        return null;
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
+        SQLiteDatabase db = handle.getReadableDatabase();
+        Cursor cursor = db.query("usuario", new String[] {"id", "nome", "email", "senha"},
+                "email = ?", new String[] {email}, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+            Usuario usuario = new Usuario(cursor.getInt(0), cursor.getString(1),
                     cursor.getString(2), cursor.getString(3));
             return usuario;
         }
