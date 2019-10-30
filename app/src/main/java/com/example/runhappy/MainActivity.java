@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(login);
     }
 
-    public void iniciar(View view) {
-        Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
-        startActivity(telaCorrida);
-    }
+//    public void iniciar(View view) {
+//        Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
+//        startActivity(telaCorrida);
+//    }
 }
