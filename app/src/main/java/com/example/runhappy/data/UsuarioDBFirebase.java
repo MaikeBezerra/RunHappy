@@ -62,6 +62,11 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
+    public Usuario findByEmail(String email) {
+        return null;
+    }
+
+    @Override
     public List<Usuario> findAll() {
         return null;
     }
