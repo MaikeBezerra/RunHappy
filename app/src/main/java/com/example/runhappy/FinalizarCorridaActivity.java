@@ -2,6 +2,7 @@ package com.example.runhappy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -59,6 +60,9 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     public void concluir(View view){
 
         // a fazer: método de cadastrar a corrida feita
+
+        Intent confirmacaoCorrida = new Intent(this, ConfirmacaoFinalizarCorridaActivity.class);
+        startActivity(confirmacaoCorrida);
 
         setResult(1);
 

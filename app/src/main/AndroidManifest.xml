@@ -17,9 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AtividadeCorridaActivity"></activity>
+        <activity android:name=".ConfirmacaoFinalizarCorridaActivity"></activity>
+        <activity android:name=".AtividadeCorridaActivity" />
         <activity android:name=".LoginPrincipalActivity" />
-        <activity android:name=".FinalizarCorridaActivity"/>
+        <activity android:name=".FinalizarCorridaActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
