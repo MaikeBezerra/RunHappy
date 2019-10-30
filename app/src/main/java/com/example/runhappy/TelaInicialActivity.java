@@ -6,10 +6,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.example.runhappy.presenter.UsuarioLocationListener;
+import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -18,10 +20,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class TelaInicialActivity extends AppCompatActivity {
+public class TelaInicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -29,6 +33,7 @@ public class TelaInicialActivity extends AppCompatActivity {
     private androidx.appcompat.widget.Toolbar toolbar;
     private DrawerLayout layout;
     private UsuarioLocationListener locationListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,32 @@ public class TelaInicialActivity extends AppCompatActivity {
         layout.addDrawerListener(toggle);
         toggle.syncState();
 
+        NavigationView navigation = findViewById(R.id.nav_menu);
+        navigation.setNavigationItemSelectedListener(this);
+
+        View headerView = navigation.getHeaderView(0);
+
+        TextView nomeUsuario = (TextView) headerView.findViewById(R.id.txtNomeUsuario);
+        nomeUsuario.setText(getIntent().getExtras().getString("Nome", "Nome do Usuário"));
+//        nomeUsuario.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                Fragment fragment = new FormUsuarioFragment();
+//
+////                bundle.putInt("id", getIntent().getExtras().getInt("id"));
+////                fragment.setArguments(bundle);
+//
+//                bundle.putString("Nome", "teste");
+//                fragment.setArguments(bundle);
+//
+//                getSupportFragmentManager().
+//                        beginTransaction().
+//                        replace(R.id.fragment_container, fragment).
+//                        commit();
+
+//            }
+//        });
 //        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 //        locationListener = new UsuarioLocationListener(this, this, manager);
 //        locationListener.getLocation();
@@ -74,5 +105,18 @@ public class TelaInicialActivity extends AppCompatActivity {
     public void iniciar(View view) {
         Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
         startActivity(telaCorrida);
+    }
+
+    public void openActivity(){
+        Intent intent = new Intent(this, CadastroActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+
+        }
+        return false;
     }
 }

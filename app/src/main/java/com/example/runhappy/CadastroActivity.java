@@ -46,6 +46,7 @@ public class CadastroActivity extends AppCompatActivity {
         usuarioDAO.addUsuario(usuario);
 
         Intent telaInicial = new Intent(this, TelaInicialActivity.class);
+        telaInicial.putExtra("Nome", usuario.getNome());
         startActivity(telaInicial);
     }
 
