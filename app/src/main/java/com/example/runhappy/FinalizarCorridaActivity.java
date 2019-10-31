@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.runhappy.data.CorridaDAOSQLite;
 import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Corrida;
@@ -21,6 +22,7 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     TextView textViewRitmoMedio;
 
     private UsuarioDAOSQLite usuarioDAOSQLite;
+    private CorridaDAOSQLite corridaDAOSQLite;
     private SQLiteHandle handle;
 
     @Override
@@ -71,14 +73,16 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
 
         // a fazer: método de cadastrar a corrida feita
         usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
+        corridaDAOSQLite = new CorridaDAOSQLite(handle);
         System.out.println(TelaInicialActivity.getEmailUsuarioLogado()+"bbbbbbbbbbbbbbbbb");
         Usuario usuario = usuarioDAOSQLite.findByEmail(TelaInicialActivity.getEmailUsuarioLogado());
         System.out.println(usuario.getNome());
         Corrida corrida = new Corrida((double) getIntent().getExtras().get("distancia"), (long) getIntent().getExtras().get("tempo"), (double) getIntent().getExtras().get("ritmoMedio"));
+        corridaDAOSQLite.adicionarCorrida(corrida);
         usuario.addCorrida(corrida);
         usuarioDAOSQLite.editUsuario(usuario);
 
-        System.out.println(usuario.getCorridas().size());
+        System.out.println(corridaDAOSQLite.findAll().size());
 
 
         Intent confirmacaoCorrida = new Intent(this, ConfirmacaoFinalizarCorridaActivity.class);

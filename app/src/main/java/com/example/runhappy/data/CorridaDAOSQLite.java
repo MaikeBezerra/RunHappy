@@ -39,7 +39,7 @@ public class CorridaDAOSQLite implements CorridaDAO{
         values.put("tempo", corrida.getTempo());
         values.put("ritmo", corrida.getRitmoMedio());
 
-        database.update("corrida", values, " id = ?", new String[] { String.valueOf(corrida.getId()) });
+        database.update("corrida", values, " id = ?", new String[] { String.valueOf(corrida.getId()) });//        usuarioDAOSQLite.editUsuario(usuario);
     }
 
     @Override
