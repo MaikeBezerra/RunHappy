@@ -5,11 +5,15 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioLocationListener;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -33,6 +38,10 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
     private androidx.appcompat.widget.Toolbar toolbar;
     private DrawerLayout layout;
     private UsuarioLocationListener locationListener;
+    private UsuarioDAOSQLite usuarioDAOSQLite;
+    private SQLiteHandle handle;
+
+    private static String emailUsuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +77,8 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 //        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 //        locationListener = new UsuarioLocationListener(this, this, manager);
 //        locationListener.getLocation();
+        emailUsuarioLogado = getIntent().getExtras().get("email").toString();
+        handle = new SQLiteHandle(this);
     }
 
     @Override
@@ -102,11 +113,43 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         startActivity(intent);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_correr: {
+                Toast.makeText(this, "Menu 1", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.nav_historico: {
+               Intent historico = new Intent(this, HistoricoActivity.class);
+               usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
+                Usuario usuario = usuarioDAOSQLite.findByEmail(getIntent().getExtras().get("email").toString());
+               historico.putExtra("usuario", usuario);
+               System.out.println(usuario.getNome());
+               startActivity(historico);
+                Toast.makeText(this, "Menu 2", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.nav_sair: {
+                Toast.makeText(this, "Menu 3", Toast.LENGTH_SHORT).show();
+                finish();
+                break;
+            }
+            default: {
+                Toast.makeText(this, "Menu Default", Toast.LENGTH_SHORT).show();
+                break;
+            }
         }
-        return false;
+
+//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawerLayout.closeDrawer(GravityCompat.START);
+        layout.closeDrawer(GravityCompat.START);
+        return true;
     }
+
+    public static String getEmailUsuarioLogado(){
+        return emailUsuarioLogado;
+    }
+
 }
