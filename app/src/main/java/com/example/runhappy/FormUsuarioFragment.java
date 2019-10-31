@@ -26,27 +26,30 @@ public class FormUsuarioFragment extends Fragment {
 
     private int id;
 
+    public FormUsuarioFragment(){}
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_form_usuario, container, false);
 
-        id = getArguments().getInt("id", 0);
-        String nome = getArguments().getString("nome", "");
-        String email = getArguments().getString("email", "");
-        String senha = getArguments().getString("senha", "");
+        //id = getArguments().getInt("id", 0);
+//        String nome = getArguments().getString("nome", "");
+//        String email = getArguments().getString("email", "");
+//        String senha = getArguments().getString("senha", "");
+//
+//        txtNome = view.findViewById(R.id.txtNome);
+//        txtEmail = view.findViewById(R.id.txtEmail);
+//        txtSenha = view.findViewById(R.id.txtSenha);
+//
+//        txtNome.setText(nome);
+//        txtEmail.setText(email);
+//        txtSenha.setText(senha);
 
-        txtNome = view.findViewById(R.id.txtNome);
-        txtEmail = view.findViewById(R.id.txtEmail);
-        txtSenha = view.findViewById(R.id.txtSenha);
 
-        txtNome.setText(nome);
-        txtEmail.setText(email);
-        txtSenha.setText(senha);
-
-        SQLiteHandle handle = new SQLiteHandle(view.getContext());
-        usuarioDAO = new UsuarioDAOSQLite(handle);
-
+//
+//        SQLiteHandle handle = new SQLiteHandle(view.getContext());
+//        usuarioDAO = new UsuarioDAOSQLite(handle);
         return view;
     }
 
