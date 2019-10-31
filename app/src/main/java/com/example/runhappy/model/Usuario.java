@@ -1,6 +1,7 @@
 package com.example.runhappy.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Usuario {
 
@@ -9,6 +10,7 @@ public class Usuario {
     private String email;
     private String senha;
     private Date dataNacimento;
+    private List<Corrida> corridas;
 
     public Usuario(){}
 
@@ -62,5 +64,13 @@ public class Usuario {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Corrida> getCorridas() {
+        return corridas;
+    }
+
+    public void setCorridas(List<Corrida> corridas) {
+        this.corridas = corridas;
     }
 }
