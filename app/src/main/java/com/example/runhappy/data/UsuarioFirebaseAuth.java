@@ -1,7 +1,6 @@
-package com.example.runhappy;
+package com.example.runhappy.data;
 
 import android.content.Context;
-import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;

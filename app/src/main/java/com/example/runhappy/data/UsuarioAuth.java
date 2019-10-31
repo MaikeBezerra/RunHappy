@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.data;
 
 public interface UsuarioAuth {
     void registrar(String email, String senha);

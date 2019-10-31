@@ -1,22 +1,17 @@
 package com.example.runhappy;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
-import com.example.runhappy.presenter.UsuarioLocationListener;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +19,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -34,10 +28,8 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    private FragmentManager fragmentManager;
     private androidx.appcompat.widget.Toolbar toolbar;
     private DrawerLayout layout;
-    private UsuarioLocationListener locationListener;
     private UsuarioDAOSQLite usuarioDAOSQLite;
     private SQLiteHandle handle;
 
@@ -74,9 +66,7 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
 
             }
         });
-//        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        locationListener = new UsuarioLocationListener(this, this, manager);
-//        locationListener.getLocation();
+
         emailUsuarioLogado = getIntent().getExtras().get("email").toString();
         handle = new SQLiteHandle(this);
     }
@@ -88,62 +78,40 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if(requestCode == 1){
-
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                locationListener.getLocation();
-            } else {
-                Toast.makeText(getApplicationContext(),"Permissão de localização Negada", Toast.LENGTH_LONG).show();
-            }
-
-        }
-    }
-
     public void iniciar(View view) {
         Intent telaCorrida = new Intent(getApplicationContext(), AtividadeCorridaActivity.class);
         startActivity(telaCorrida);
     }
 
-    public void openActivity(){
-        Intent intent = new Intent(this, CadastroActivity.class);
-        startActivity(intent);
-    }
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_correr: {
-                Toast.makeText(this, "Menu 1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Menu 1", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_historico: {
-               Intent historico = new Intent(this, HistoricoActivity.class);
-               usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
+                Intent historico = new Intent(getApplicationContext(), HistoricoActivity.class);
+                usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
                 Usuario usuario = usuarioDAOSQLite.findByEmail(getIntent().getExtras().get("email").toString());
-               historico.putExtra("usuario", usuario);
-               System.out.println(usuario.getNome());
-               startActivity(historico);
-                Toast.makeText(this, "Menu 2", Toast.LENGTH_SHORT).show();
+
+                historico.putExtra("usuario", usuario);
+                startActivity(historico);
+
+                Toast.makeText(getApplicationContext(), "Menu 2", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_sair: {
-                Toast.makeText(this, "Menu 3", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Menu 3", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             }
             default: {
-                Toast.makeText(this, "Menu Default", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Menu Default", Toast.LENGTH_SHORT).show();
                 break;
             }
         }
 
-//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawerLayout.closeDrawer(GravityCompat.START);
         layout.closeDrawer(GravityCompat.START);
         return true;
     }

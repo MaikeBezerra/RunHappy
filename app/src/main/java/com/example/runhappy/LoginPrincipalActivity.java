@@ -15,7 +15,6 @@ import com.example.runhappy.model.Usuario;
 
 public class LoginPrincipalActivity extends AppCompatActivity {
 
-    private UsuarioAuth auth;
     private UsuarioDAO usuarioDAO;
     private EditText email;
     private EditText senha;
@@ -24,8 +23,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        //auth = UsuarioFirebaseAuth.getInstance(getApplicationContext());
 
         SQLiteHandle handle = new SQLiteHandle(getApplicationContext());
         usuarioDAO = new UsuarioDAOSQLite(handle);
@@ -36,7 +33,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        //auth.login(email.getText().toString(), senha.getText().toString());
         Usuario usuario = usuarioDAO.findByEmail(email.getText().toString());
 
         if (usuario != null && usuario.getSenha().equals(senha.getText().toString())){
@@ -44,8 +40,9 @@ public class LoginPrincipalActivity extends AppCompatActivity {
             telaInicial.putExtra("nome", usuario.getNome());
             telaInicial.putExtra("email", usuario.getEmail());
             startActivity(telaInicial);
-        } else {
 
+            finish();
+        } else {
             Toast.makeText(getApplicationContext(), "Erro nos parametros", Toast.LENGTH_SHORT).show();
         }
     }

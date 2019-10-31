@@ -35,12 +35,10 @@ public class CadastroActivity extends AppCompatActivity {
         Usuario usuario = new Usuario(nome.getText().toString(), email.getText().toString(), senha.getText().toString());
         viewModel.adicionarUsuario(usuario);
 
-        Intent telaInicial = new Intent(this, TelaInicialActivity.class);
+        Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
         telaInicial.putExtra("nome", usuario.getNome());
         telaInicial.putExtra("email", usuario.getEmail());
         startActivity(telaInicial);
-
-        //finish();
     }
 
 }

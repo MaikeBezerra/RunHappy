@@ -42,10 +42,6 @@
             android:name=".TelaInicialActivity"
             android:label="@string/title_activity_tela_inicial"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BoasVindasActivity" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
         <activity android:name=".CadastroActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
