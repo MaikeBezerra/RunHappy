@@ -54,26 +54,17 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         View headerView = navigation.getHeaderView(0);
 
         TextView nomeUsuario = (TextView) headerView.findViewById(R.id.txtNomeUsuario);
-        nomeUsuario.setText(getIntent().getExtras().getString("Nome", "Nome do Usuário"));
-//        nomeUsuario.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Bundle bundle = new Bundle();
-//                Fragment fragment = new FormUsuarioFragment();
-//
-////                bundle.putInt("id", getIntent().getExtras().getInt("id"));
-////                fragment.setArguments(bundle);
-//
-//                bundle.putString("Nome", "teste");
-//                fragment.setArguments(bundle);
-//
-//                getSupportFragmentManager().
-//                        beginTransaction().
-//                        replace(R.id.fragment_container, fragment).
-//                        commit();
+        nomeUsuario.setText(getIntent().getExtras().getString("nome", "Nome do Usuário"));
+        nomeUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editarUsuario = new Intent(getApplicationContext(), EditarUsuarioActivity.class);
+                editarUsuario.putExtra("nome", getIntent().getExtras().getString("nome"));
+                editarUsuario.putExtra("email", getIntent().getExtras().getString("email"));
+                startActivity(editarUsuario);
 
-//            }
-//        });
+            }
+        });
 //        LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 //        locationListener = new UsuarioLocationListener(this, this, manager);
 //        locationListener.getLocation();

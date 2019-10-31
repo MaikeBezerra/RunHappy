@@ -35,7 +35,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         SQLiteDatabase database = handle.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("name", usuario.getNome());
+        values.put("nome", usuario.getNome());
         values.put("email", usuario.getEmail());
         values.put("senha", usuario.getSenha());
 
