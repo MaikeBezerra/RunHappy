@@ -1,10 +1,12 @@
-package com.example.runhappy;
+package com.example.runhappy.ui.corrida;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.runhappy.R;
 
 public class CorridaViewHolder extends RecyclerView.ViewHolder {
 

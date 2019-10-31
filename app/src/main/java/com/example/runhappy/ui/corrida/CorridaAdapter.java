@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.ui.corrida;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.runhappy.R;
 import com.example.runhappy.model.Corrida;
 
 import java.util.List;

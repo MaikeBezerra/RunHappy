@@ -13,7 +13,6 @@ public class Usuario implements Parcelable {
     private String nome;
     private String email;
     private String senha;
-    private Date dataNacimento;
     private List<Corrida> corridas;
 
     public Usuario(){
@@ -21,17 +20,15 @@ public class Usuario implements Parcelable {
     }
 
     public Usuario(String nome, String email, String senha){
+        this();
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.corridas  = new ArrayList<Corrida>();
-       // this.dataNacimento = dataNacimento;
     }
 
     public Usuario(Integer id, String nome, String email, String senha){
         this(nome, email, senha);
         this.id = id;
-        this.corridas  = new ArrayList<Corrida>();
     }
 
     protected Usuario(Parcel in) {
@@ -79,14 +76,6 @@ public class Usuario implements Parcelable {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public Date getDataNacimento() {
-        return dataNacimento;
-    }
-
-    public void setDataNacimento(Date dataNacimento) {
-        this.dataNacimento = dataNacimento;
     }
 
     public Integer getId() {

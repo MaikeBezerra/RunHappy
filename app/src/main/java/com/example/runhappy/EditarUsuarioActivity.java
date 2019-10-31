@@ -53,6 +53,7 @@ public class EditarUsuarioActivity extends AppCompatActivity {
 
         Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
         telaInicial.putExtra("nome", usuario.getNome());
+        telaInicial.putExtra("email", usuario.getEmail());
         startActivity(telaInicial);
 
         finish();

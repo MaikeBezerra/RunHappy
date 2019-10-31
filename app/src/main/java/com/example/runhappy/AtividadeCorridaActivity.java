@@ -14,13 +14,6 @@ import com.example.runhappy.transactions.Constantes;
 
 public class AtividadeCorridaActivity extends AppCompatActivity {
 
-//    private static TextView section_label;
-//    private static long initialTime;
-//    private static Handler handler;
-//    private static boolean isRunning;
-//    private static final long MILLIS_IN_SEC = 1000L;
-//    private static final int SECS_IN_MIN = 60;
-
     private Chronometer chronometer;
     private long milisegundos;
     private boolean estaContando;
@@ -29,8 +22,6 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
     private double distancia;
     private long tempo;
     private double ritmoMedio;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +74,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
             //a definir os comandos para cadastrar corrida
 
             finish();
-        }else if(requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CANCELAR){
+        } else if(requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CANCELAR){
 
         }
     }

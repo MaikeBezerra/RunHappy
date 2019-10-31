@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.ui.corrida.CorridaAdapter;
 
 public class HistoricoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;

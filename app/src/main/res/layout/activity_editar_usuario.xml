@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/fragmentForm"
-        android:name="com.example.runhappy.FormUsuarioFragment"
+        android:name="com.example.runhappy.ui.usuario.UsuarioFormFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
