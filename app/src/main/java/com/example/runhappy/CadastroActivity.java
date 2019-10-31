@@ -47,6 +47,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         Intent telaInicial = new Intent(this, TelaInicialActivity.class);
         telaInicial.putExtra("Nome", usuario.getNome());
+        telaInicial.putExtra("email", usuario.getEmail());
         startActivity(telaInicial);
     }
 

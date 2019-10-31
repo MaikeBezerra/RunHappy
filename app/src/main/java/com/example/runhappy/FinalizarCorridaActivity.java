@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.model.Corrida;
+import com.example.runhappy.model.Usuario;
+
 import java.text.DecimalFormat;
 
 public class FinalizarCorridaActivity extends AppCompatActivity {
@@ -14,6 +19,9 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     TextView textViewDistancia;
     TextView textViewTempo;
     TextView textViewRitmoMedio;
+
+    private UsuarioDAOSQLite usuarioDAOSQLite;
+    private SQLiteHandle handle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,8 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
         textViewDistancia = (TextView) findViewById(R.id.textViewDistancia);
         textViewTempo = (TextView) findViewById(R.id.textViewTempo);
         textViewRitmoMedio = (TextView) findViewById(R.id.textViewRitmoMedio);
+
+        handle = new SQLiteHandle(this);
 
         if(getIntent().getExtras() != null){
             String distancia = getIntent().getExtras().get("distancia").toString();
@@ -60,6 +70,16 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     public void concluir(View view){
 
         // a fazer: método de cadastrar a corrida feita
+        usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
+        System.out.println(TelaInicialActivity.getEmailUsuarioLogado()+"bbbbbbbbbbbbbbbbb");
+        Usuario usuario = usuarioDAOSQLite.findByEmail(TelaInicialActivity.getEmailUsuarioLogado());
+        System.out.println(usuario.getNome());
+        Corrida corrida = new Corrida((double) getIntent().getExtras().get("distancia"), (long) getIntent().getExtras().get("tempo"), (double) getIntent().getExtras().get("ritmoMedio"));
+        usuario.addCorrida(corrida);
+        usuarioDAOSQLite.editUsuario(usuario);
+
+        System.out.println(usuario.getCorridas().size());
+
 
         Intent confirmacaoCorrida = new Intent(this, ConfirmacaoFinalizarCorridaActivity.class);
         startActivity(confirmacaoCorrida);
