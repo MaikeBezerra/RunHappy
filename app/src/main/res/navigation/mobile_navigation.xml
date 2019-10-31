@@ -25,7 +25,7 @@
         android:id="@+id/nav_historico"
         android:name="com.example.runhappy.ui.gallery.GalleryFragment"
         android:label="@string/menu_historico"
-        tools:layout="@layout/fragment_historico" />
+        tools:layout="@layout/activity_historico" />
 
     <fragment
         android:id="@+id/nav_slideshow"
