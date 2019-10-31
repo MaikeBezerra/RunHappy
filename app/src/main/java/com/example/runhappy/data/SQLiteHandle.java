@@ -18,7 +18,8 @@ public class SQLiteHandle extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createUsuario = "CREATE TABLE usuario (id INTEGER PRIMARY KEY, nome TEXT, email TEXT, senha TEXT)";
-        String createCorrida = "CREATE TABLE corrida (id INTEGER PRIMARY KEY, distancia INTEGER, ritmo INTEGER)";
+        String createCorrida = "CREATE TABLE corrida (id INTEGER PRIMARY KEY, distancia INTEGER, tempo INTEGER, " +
+                "ritmo INTEGER, idUsuario INTEGER, FOREIGN KEY (idUsuario) REFERENCES usuario(id))";
 
         db.execSQL(createUsuario);
         db.execSQL(createCorrida);

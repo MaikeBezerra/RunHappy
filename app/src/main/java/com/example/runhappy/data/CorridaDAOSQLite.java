@@ -80,4 +80,20 @@ public class CorridaDAOSQLite implements CorridaDAO{
         }
         return corridas;
     }
+
+    public List<Corrida> findAll(Integer idUsuario) {
+        List<Corrida> corridas = new ArrayList<>();
+
+        SQLiteDatabase database = handle.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM corrida c WHERE c.idUsuario = " + idUsuario, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1),
+                        cursor.getInt(2), cursor.getInt(3));
+                corridas.add(corrida);
+            } while (cursor.moveToNext());
+        }
+        return corridas;
+    }
 }

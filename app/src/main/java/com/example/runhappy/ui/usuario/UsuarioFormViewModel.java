@@ -1,6 +1,6 @@
 package com.example.runhappy.ui.usuario;
 
-import android.view.View;
+import android.app.Activity;;
 import android.widget.EditText;
 
 import com.example.runhappy.R;
@@ -12,10 +12,10 @@ public class UsuarioFormViewModel {
     private EditText email;
     private EditText senha;
 
-    public UsuarioFormViewModel(View view) {
-        this.nome = view.findViewById(R.id.txtNome);
-        this.email = view.findViewById(R.id.txtEmail);
-        this.senha = view.findViewById(R.id.txtSenha);
+    public UsuarioFormViewModel(Activity tela) {
+        this.nome = tela.findViewById(R.id.txtNome);
+        this.email = tela.findViewById(R.id.txtEmail);
+        this.senha = tela.findViewById(R.id.txtSenha);
     }
 
     public Usuario getUsuario() {
@@ -24,5 +24,16 @@ public class UsuarioFormViewModel {
         String senha = this.senha.getText().toString();
 
         return new Usuario(nome, email, senha);
+    }
+
+    public Usuario updateIdField(int id){
+        Usuario usuario = getUsuario();
+        usuario.setId(id);
+        return usuario;
+    }
+
+    public void setFields(String nome, String email) {
+        this.nome.setText(nome);
+        this.email.setText(email);
     }
 }

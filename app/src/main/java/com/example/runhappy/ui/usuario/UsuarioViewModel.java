@@ -6,6 +6,7 @@ import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.presenter.UsuarioChangeListener;
 
 public class UsuarioViewModel {
 
@@ -21,8 +22,19 @@ public class UsuarioViewModel {
 
     public void adicionarUsuario(Usuario usuario){
         usuarioDAO.addUsuario(usuario);
+        changeUsuario(usuario);
     }
 
+    public void editarUsuario(Usuario usuario) {
+        usuarioDAO.editUsuario(usuario);
+        changeUsuario(usuario);
+    }
 
+    public Usuario findUsuarioByEmail(String email){
+        return usuarioDAO.findByEmail(email);
+    }
 
+    private void changeUsuario(Usuario usuario){
+        UsuarioChangeListener.getInstance().update(usuario);
+    }
 }
