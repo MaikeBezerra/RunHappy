@@ -17,15 +17,20 @@ public class SQLiteHandle extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE usuario (id INTEGER PRIMARY KEY, nome TEXT, email TEXT, senha TEXT)";
-        db.execSQL(sql);
+        String createUsuario = "CREATE TABLE usuario (id INTEGER PRIMARY KEY, nome TEXT, email TEXT, senha TEXT)";
+        String createCorrida = "CREATE TABLE corrida (id INTEGER PRIMARY KEY, distancia INTEGER, ritmo INTEGER)";
+
+        db.execSQL(createUsuario);
+        db.execSQL(createCorrida);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 //        if (oldVersion < newVersion) {
-        String sql = "DROP TABLE IF EXISTS usuario";
-        db.execSQL(sql);
+        String dropUsuario = "DROP TABLE IF EXISTS usuario";
+        String dropCorrida = "DROP TABLE IF EXISTS corrida";
+        db.execSQL(dropUsuario);
+        db.execSQL(dropCorrida);
         onCreate(db);
 //        }
     }
