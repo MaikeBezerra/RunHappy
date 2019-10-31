@@ -14,16 +14,34 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewIdCorrida"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="TextView"
-                android:textAlignment="textStart"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewIdCorrida2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Corrida"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textViewIdCorrida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="n"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

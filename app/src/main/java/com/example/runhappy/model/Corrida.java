@@ -6,6 +6,7 @@ public class Corrida {
     private double distancia;
     private long tempo;
     private double ritmoMedio;
+    private Usuario usuario;
 
     public Corrida(){}
 
@@ -13,12 +14,15 @@ public class Corrida {
         this.distancia = distancia;
         this.tempo = tempo;
         this.ritmoMedio = ritmoMedio;
+        this.usuario = new Usuario();
     }
 
     public Corrida(int id, double distancia, long tempo, double ritmoMedio) {
         this(distancia, tempo, ritmoMedio);
         this.id = id;
     }
+
+
 
     public int getId() {
         return id;

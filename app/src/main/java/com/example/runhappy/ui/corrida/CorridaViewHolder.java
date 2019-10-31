@@ -10,6 +10,7 @@ import com.example.runhappy.R;
 
 public class CorridaViewHolder extends RecyclerView.ViewHolder {
 
+    public TextView tvIdCorrida;
     public TextView tvDistancia;
     public TextView tvTempo;
     public TextView tvRitmo;
@@ -21,5 +22,6 @@ public class CorridaViewHolder extends RecyclerView.ViewHolder {
         tvDistancia = (TextView) itemView.findViewById(R.id.textViewDistancia);
         tvTempo = (TextView) itemView.findViewById(R.id.textViewTempo);
         tvRitmo = (TextView) itemView.findViewById(R.id.textViewRitmo);
+        tvIdCorrida = (TextView) itemView.findViewById(R.id.textViewIdCorrida);
     }
 }
