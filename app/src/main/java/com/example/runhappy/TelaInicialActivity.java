@@ -60,7 +60,6 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
             @Override
             public void onClick(View v) {
                 Intent editarUsuario = new Intent(getApplicationContext(), EditarUsuarioActivity.class);
-                editarUsuario.putExtra("nome", getIntent().getExtras().getString("nome"));
                 editarUsuario.putExtra("email", getIntent().getExtras().getString("email"));
                 startActivity(editarUsuario);
 

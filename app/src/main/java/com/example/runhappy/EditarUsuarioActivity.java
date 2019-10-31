@@ -11,15 +11,16 @@ import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.presenter.UsuarioChangeListener;
+import com.example.runhappy.ui.usuario.UsuarioFormViewModel;
+import com.example.runhappy.ui.usuario.UsuarioViewModel;
 
-public class EditarUsuarioActivity extends AppCompatActivity {
+public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioObserver {
 
     private Integer idUsuario;
-    private UsuarioDAO usuarioDAO;
 
-    private EditText nome;
-    private EditText email;
-    private EditText senha;
+    private UsuarioViewModel viewModel;
+    private UsuarioFormViewModel formViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +28,23 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_usuario);
         setTitle("Editar Usuario");
 
-        SQLiteHandle handle = new SQLiteHandle(getApplicationContext());
-        usuarioDAO = new UsuarioDAOSQLite(handle);
+        viewModel = new UsuarioViewModel(getApplicationContext());
+        formViewModel = new UsuarioFormViewModel(this);
 
-        nome = findViewById(R.id.txtNome);
-        email = findViewById(R.id.txtEmail);
-        senha = findViewById(R.id.txtSenha);
+        UsuarioChangeListener.getInstance().adicionaObeserver(this);
 
         String usuarioEmail = getIntent().getExtras().getString("email", "");
-        Usuario usuario = usuarioDAO.findByEmail(usuarioEmail);
+        Usuario usuario = viewModel.findUsuarioByEmail(usuarioEmail);
 
         if (usuario != null) {
-            idUsuario = usuario.getId();
-            nome.setText(usuario.getNome());
-            email.setText(usuario.getEmail());
+            onChangeUsuario(usuario);
         }
 
     }
 
     public void salvar(View view) {
-        Usuario usuario = new Usuario(idUsuario, nome.getText().toString(), email.getText().toString(),
-                    senha.getText().toString());
-
-        usuarioDAO.editUsuario(usuario);
+        Usuario usuario = formViewModel.updateIdField(idUsuario);
+        viewModel.editarUsuario(usuario);
 
         Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
         telaInicial.putExtra("nome", usuario.getNome());
@@ -61,5 +56,11 @@ public class EditarUsuarioActivity extends AppCompatActivity {
 
     public void cancelar(View view){
         finish();
+    }
+
+    @Override
+    public void onChangeUsuario(Usuario usuario) {
+        idUsuario = usuario.getId();
+        formViewModel.setFields(usuario.getNome(), usuario.getEmail());
     }
 }
