@@ -15,4 +15,6 @@ public interface CorridaDAO {
     Corrida getCorrida( int corridaId);
 
     List<Corrida> findAll();
+
+    List<Corrida> findAll(Integer idUsuario);
 }
