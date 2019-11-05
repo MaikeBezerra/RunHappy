@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.runhappy.data.CorridaDAO;
+import com.example.runhappy.data.CorridaDAOSQLite;
 import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
@@ -17,23 +19,23 @@ public class HistoricoActivity extends AppCompatActivity {
     private Usuario usuario;
 
     private UsuarioDAOSQLite usuarioDAOSQLite;
-    private SQLiteHandle handle;
+    private CorridaDAO corridaDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico);
-        handle = new SQLiteHandle(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.rvCorrida);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        SQLiteHandle handle = new SQLiteHandle(getApplicationContext());
         usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
+        corridaDAO = new CorridaDAOSQLite(handle);
 
         usuario = usuarioDAOSQLite.findByEmail(TelaInicialActivity.getEmailUsuarioLogado());
-        System.out.println(usuario.getNome()+"aaaaaaaaaaaaaaaaaaaaaaaa");
-        corridaAdapter = new CorridaAdapter(usuario.getCorridas());
+        corridaAdapter = new CorridaAdapter(corridaDAO.findAll(usuario.getId()));
         recyclerView.setAdapter(corridaAdapter);
     }
 }
