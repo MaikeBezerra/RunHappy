@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".HistoricoActivity"></activity>
+        <activity android:name=".UsuarioListActivity"></activity>
+        <activity android:name=".HistoricoActivity" />
         <activity android:name=".EditarUsuarioActivity" />
         <activity android:name=".ConfirmacaoFinalizarCorridaActivity" />
         <activity android:name=".AtividadeCorridaActivity" />

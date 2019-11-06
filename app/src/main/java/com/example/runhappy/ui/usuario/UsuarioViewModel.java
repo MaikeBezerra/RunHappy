@@ -8,6 +8,8 @@ import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 
+import java.util.List;
+
 public class UsuarioViewModel {
 
     private Context context;
@@ -36,5 +38,9 @@ public class UsuarioViewModel {
 
     private void changeUsuario(Usuario usuario){
         UsuarioChangeListener.getInstance().update(usuario);
+    }
+
+    public List<Usuario> getUsuarios(){
+        return usuarioDAO.findAll();
     }
 }

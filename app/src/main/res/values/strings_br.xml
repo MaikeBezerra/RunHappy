@@ -8,4 +8,10 @@
     <string name="menu_item_usuario">Conta</string>
     <string name="abrir_drawer">Abrindo o drawer</string>
     <string name="fechar_drawer">Fechando o drawer</string>
+
+    <string name="nome_usuario">Nome do Usuario</string>
+
+
+    <string name="imagem_usuario_descricao">Imagem do usuario</string>
+    <string name="botao_seguir">Seguir</string>
 </resources>
