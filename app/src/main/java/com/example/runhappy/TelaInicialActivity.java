@@ -89,6 +89,11 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
                 Toast.makeText(getApplicationContext(), "Menu 1", Toast.LENGTH_SHORT).show();
                 break;
             }
+            case R.id.nav_usuarios:
+                Intent usuarios = new Intent(getApplicationContext(), UsuarioListActivity.class);
+                startActivity(usuarios);
+                finish();
+                break;
             case R.id.nav_historico: {
                 Intent historico = new Intent(getApplicationContext(), HistoricoActivity.class);
                 usuarioDAOSQLite = new UsuarioDAOSQLite(handle);

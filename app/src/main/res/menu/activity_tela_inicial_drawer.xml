@@ -10,6 +10,9 @@
             android:icon="@drawable/ic_directions_run_black_24dp"
             android:title="@string/menu_correr" />
         <item
+            android:id="@+id/nav_usuarios"
+            android:title="usuarios" />
+        <item
             android:id="@+id/nav_historico"
             android:icon="@drawable/ic_library_books_black_24dp"
             android:title="@string/menu_historico" />

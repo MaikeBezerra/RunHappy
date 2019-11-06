@@ -49,6 +49,11 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
+    public void adicionarSeguidor(Usuario usuario, String emailSeguido) {
+
+    }
+
+    @Override
     public void editUsuario(Usuario usuario) {
 
     }
@@ -70,6 +75,11 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public List<Usuario> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Usuario> findAllSeguidores(String myEmail) {
         return null;
     }
 
