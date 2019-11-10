@@ -73,6 +73,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         if (requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CONCLUIR){
             //a definir os comandos para cadastrar corrida
 
+
             finish();
         } else if(requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CANCELAR){
 
