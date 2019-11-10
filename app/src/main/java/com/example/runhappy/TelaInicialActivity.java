@@ -7,6 +7,7 @@ import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,8 +22,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaInicialActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -32,6 +36,7 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
     private DrawerLayout layout;
     private UsuarioDAOSQLite usuarioDAOSQLite;
     private SQLiteHandle handle;
+    ImageView imagemUsuario;
 
     private static String emailUsuarioLogado;
 
@@ -55,6 +60,9 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
         View headerView = navigation.getHeaderView(0);
 
         TextView nomeUsuario = (TextView) headerView.findViewById(R.id.txtNomeUsuario);
+        imagemUsuario = (CircleImageView) headerView.findViewById(R.id.imagemUsuario);
+        Picasso.get().load((String)getIntent().getExtras().get("imagem")).into(imagemUsuario);
+
         nomeUsuario.setText(getIntent().getExtras().getString("nome", "Nome do Usuário"));
         nomeUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +74,7 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
             }
         });
 
-        emailUsuarioLogado = getIntent().getExtras().get("email").toString();
+      emailUsuarioLogado = getIntent().getExtras().get("email").toString();
         handle = new SQLiteHandle(this);
     }
 
@@ -92,7 +100,6 @@ public class TelaInicialActivity extends AppCompatActivity implements Navigation
             case R.id.nav_usuarios:
                 Intent usuarios = new Intent(getApplicationContext(), UsuarioListActivity.class);
                 startActivity(usuarios);
-                finish();
                 break;
             case R.id.nav_historico: {
                 Intent historico = new Intent(getApplicationContext(), HistoricoActivity.class);
