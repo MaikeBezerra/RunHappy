@@ -106,7 +106,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
 
                         try {
                             name = object.getString("name");
-                            System.out.println("bbbbbbbbbbbbbbb"+name);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -120,7 +119,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Name: " + name + " Email: " + email1, Toast.LENGTH_LONG).show();
                         telaInicial.putExtra("nome", name);
                         telaInicial.putExtra("email", email1);
-                        System.out.println("cccccccc" +name);
                         telaInicial.putExtra("imagem",foto);
 
                         if (usuarioDAO.findByEmail(email1).equals(null)) {
@@ -158,8 +156,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
         try {
             URL profilePicture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
             img = profilePicture.toString();
-//            nomeUsuario = object.getString("first_name");
-//            emailUsuario = object.getString("email");
             System.out.println(object.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();

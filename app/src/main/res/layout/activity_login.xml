@@ -20,25 +20,51 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp">
 
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="cursive"
+            android:text="Entre no RunHappy"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="36sp" />
+
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_edittext"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true" />
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:selectAllOnFocus="true"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_edittext"
             android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true" />
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:selectAllOnFocus="true"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -53,11 +79,15 @@
 
         <Button
             android:id="@+id/login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/botao_entrar"
             android:enabled="true"
             android:onClick="login"
-            android:text="@string/action_sign_in" />
+            android:text="@string/entrar"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
@@ -68,11 +98,24 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Ou"
+            android:textAlignment="center"
+            android:textColor="#FC000000"
+            android:textSize="18sp" />
+
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="170dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:radius="75dp" />
     </LinearLayout>
 
     <ProgressBar

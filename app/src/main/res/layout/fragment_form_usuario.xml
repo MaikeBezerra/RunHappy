@@ -15,9 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:hint="@string/nome_obrigatorio"
-        android:inputType="textPersonName" />
+        android:hint="@string/nome"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:selectAllOnFocus="true"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtEmail"
@@ -27,7 +35,15 @@
         android:layout_marginBottom="4dp"
         android:ems="10"
         android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:selectAllOnFocus="true"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtSenha"
@@ -36,6 +52,14 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/prompt_password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:selectAllOnFocus="true"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
 </LinearLayout>
