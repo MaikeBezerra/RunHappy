@@ -91,11 +91,8 @@ public class LoginPrincipalActivity extends AppCompatActivity {
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         mDialog.dismiss();
                         Log.d("response", response.toString());
-                        System.out.println(response.toString());
                         getFacebookData(object);
-                        System.out.println(object.toString());
                         try {
-                            System.out.println("aaaaaaaaaaaaaaaaaaaaa"+object.getString("name"));
                             telaInicial.putExtra("nome", object.getString("name"));
                             String id = object.getString("id");
                             foto = "https://graph.facebook.com/"+id+"/picture?height=120&width=120";

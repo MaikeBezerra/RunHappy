@@ -21,14 +21,14 @@ public class UsuarioListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_list);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.usuarioListView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView recyclerView = findViewById(R.id.usuarioListView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
         UsuarioViewModel model = new UsuarioViewModel(getApplicationContext());
         List<Usuario> usuarios = new ArrayList<>();
         usuarios.addAll(model.getUsuarios());
-        UsuarioListAdapter adapter = new UsuarioListAdapter(usuarios);
+        UsuarioListAdapter adapter = new UsuarioListAdapter(getApplicationContext(), usuarios);
 
         recyclerView.setAdapter(adapter);
     }
