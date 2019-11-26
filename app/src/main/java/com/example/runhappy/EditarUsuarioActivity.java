@@ -17,7 +17,7 @@ import com.example.runhappy.ui.usuario.UsuarioViewModel;
 
 public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioObserver {
 
-    private Integer idUsuario;
+    private String idUsuario;
 
     private UsuarioViewModel viewModel;
     private UsuarioFormViewModel formViewModel;
@@ -28,7 +28,7 @@ public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioO
         setContentView(R.layout.activity_editar_usuario);
         setTitle("Editar Usuario");
 
-        viewModel = new UsuarioViewModel(getApplicationContext());
+        viewModel = new UsuarioViewModel(this, getApplicationContext());
         formViewModel = new UsuarioFormViewModel(this);
 
         UsuarioChangeListener.getInstance().adicionaObeserver(this);

@@ -34,7 +34,7 @@ public class HistoricoActivity extends AppCompatActivity {
         usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
         corridaDAO = new CorridaDAOSQLite(handle);
 
-        usuario = usuarioDAOSQLite.findByEmail(TelaInicialActivity.getEmailUsuarioLogado());
+        usuario = usuarioDAOSQLite.findByEmail("teste");
         corridaAdapter = new CorridaAdapter(corridaDAO.findAll(usuario.getId()));
         recyclerView.setAdapter(corridaAdapter);
     }

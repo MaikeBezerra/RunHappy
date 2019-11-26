@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.runhappy.model.Usuario;
-import com.example.runhappy.ui.corrida.CorridaAdapter;
 import com.example.runhappy.ui.usuario.UsuarioListAdapter;
 import com.example.runhappy.ui.usuario.UsuarioViewModel;
 
@@ -25,7 +24,7 @@ public class UsuarioListActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        UsuarioViewModel model = new UsuarioViewModel(getApplicationContext());
+        UsuarioViewModel model = new UsuarioViewModel(this, getApplicationContext());
         List<Usuario> usuarios = new ArrayList<>();
         usuarios.addAll(model.getUsuarios());
         UsuarioListAdapter adapter = new UsuarioListAdapter(getApplicationContext(), usuarios);

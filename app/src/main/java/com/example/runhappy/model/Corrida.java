@@ -6,18 +6,18 @@ public class Corrida {
     private double distancia;
     private long tempo;
     private double ritmoMedio;
-    private int corredor;
+    private String corredor;
 
     public Corrida(){}
 
-    public Corrida(double distancia, long tempo, double ritmoMedio, int corredor) {
+    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor) {
         this.distancia = distancia;
         this.tempo = tempo;
         this.ritmoMedio = ritmoMedio;
         this.corredor = corredor;
     }
 
-    public Corrida(int id, double distancia, long tempo, double ritmoMedio, int corredor) {
+    public Corrida(int id, double distancia, long tempo, double ritmoMedio, String corredor) {
         this(distancia, tempo, ritmoMedio, corredor);
         this.id = id;
     }
@@ -54,11 +54,11 @@ public class Corrida {
         this.ritmoMedio = ritmoMedio;
     }
 
-    public int getCorredor() {
+    public String getCorredor() {
         return corredor;
     }
 
-    public void setCorredor(int corredor) {
+    public void setCorredor(String corredor) {
         this.corredor = corredor;
     }
 

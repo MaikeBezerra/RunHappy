@@ -86,7 +86,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
 
         if (requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CONCLUIR){
             //a definir os comandos para cadastrar corrida
-            int idCorredor = usuarioDAO.findByEmail(TelaInicialActivity.getEmailUsuarioLogado()).getId();
+            String idCorredor = usuarioDAO.findByEmail("TESTE").getId();
             Corrida corrida = new Corrida(distancia, tempo, ritmoMedio, idCorredor);
             corridaDAO.adicionarCorrida(corrida);
 

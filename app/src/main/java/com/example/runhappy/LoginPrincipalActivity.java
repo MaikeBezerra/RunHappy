@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.runhappy.data.SQLiteHandle;
@@ -40,8 +39,6 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     private EditText senha;
     CallbackManager callbackManager;
     LoginButton loginButton;
-    private String nomeUsuario;
-    private String emailUsuario;
     private Bitmap imagemUsuario;
     private String img;
     ProgressDialog mDialog;
@@ -49,6 +46,7 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     String email1 = "";
     Intent telaInicial;
     String foto;
+
     private UsuarioViewModel viewModel;
 
 
@@ -63,19 +61,17 @@ public class LoginPrincipalActivity extends AppCompatActivity {
         email = findViewById(R.id.username);
         senha = findViewById(R.id.password);
 
+        viewModel = new UsuarioViewModel(this, getApplicationContext());
 
         callbackManager = CallbackManager.Factory.create();
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
-        //loginButton.setReadPermissions("email");
         loginButton.setPermissions(Arrays.asList("public_profile", "email"));
 
         telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-
-
 
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -170,18 +166,7 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Usuario usuario = usuarioDAO.findByEmail(email.getText().toString());
-
-        if (usuario != null && usuario.getSenha().equals(senha.getText().toString())){
-            Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
-            telaInicial.putExtra("nome", usuario.getNome());
-            telaInicial.putExtra("email", usuario.getEmail());
-            startActivity(telaInicial);
-
-            finish();
-        } else {
-            Toast.makeText(getApplicationContext(), "Erro nos parametros", Toast.LENGTH_SHORT).show();
-        }
+        viewModel.logarUsuario(email.getText().toString(), senha.getText().toString());
     }
 
 
