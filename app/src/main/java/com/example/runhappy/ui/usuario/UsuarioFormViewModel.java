@@ -26,7 +26,7 @@ public class UsuarioFormViewModel {
         return new Usuario(nome, email, senha);
     }
 
-    public Usuario updateIdField(int id){
+    public Usuario updateIdField(String id){
         Usuario usuario = getUsuario();
         usuario.setId(id);
         return usuario;

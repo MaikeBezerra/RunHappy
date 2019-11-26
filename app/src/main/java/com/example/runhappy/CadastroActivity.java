@@ -50,7 +50,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         setTitle("Cadastro");
 
-        viewModel = new UsuarioViewModel(getApplicationContext());
+        viewModel = new UsuarioViewModel(this, getApplicationContext());
         formViewModel = new UsuarioFormViewModel(this);
 
         handle = new SQLiteHandle(this);
@@ -58,11 +58,9 @@ public class CadastroActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         loginButton = (LoginButton) findViewById(R.id.login_button2);
-        //loginButton.setReadPermissions("email");
         loginButton.setPermissions(Arrays.asList("public_profile", "email"));
         telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
 
-        // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -77,16 +75,13 @@ public class CadastroActivity extends AppCompatActivity {
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         mDialog.dismiss();
                         Log.d("response", response.toString());
-                        System.out.println(response.toString());
-                        System.out.println(object.toString());
+
                         try {
 
-                            System.out.println("aaaaaaaaaaaaaaaaaaaaa" + object.getString("name"));
                             telaInicial.putExtra("nome", object.getString("name"));
                             String id = object.getString("id");
                             foto = "https://graph.facebook.com/" + id + "/picture?height=120&width=120";
                             name = object.getString("name");
-                            System.out.println("bbbbbbbbbbbbbbb" + name);
                             email1 = object.getString("email");
 
                         } catch (JSONException e) {
@@ -96,7 +91,6 @@ public class CadastroActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Name: " + name + " Email: " + email1, Toast.LENGTH_LONG).show();
                         telaInicial.putExtra("nome", name);
                         telaInicial.putExtra("email", email1);
-                        System.out.println(email1+"cccccccc" + name);
                         telaInicial.putExtra("imagem", foto);
 
                         if (usuarioDAO.findByEmail(email1) == null) {
@@ -127,37 +121,15 @@ public class CadastroActivity extends AppCompatActivity {
         telaInicial.putExtra("nome", name);
     }
 
-//    private void getFacebookData(JSONObject object) {
-//        try {
-//            URL profilePicture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
-//            img = profilePicture.toString();
-////            nomeUsuario = object.getString("first_name");
-////            emailUsuario = object.getString("email");
-//            System.out.println(object.toString());
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
     public void cadastrar(View view) {
         Usuario usuario = formViewModel.getUsuario();
         viewModel.adicionarUsuario(usuario);
-
-        Intent telaInicial = new Intent(getApplicationContext(), TelaInicialActivity.class);
-        telaInicial.putExtra("nome", usuario.getNome());
-        telaInicial.putExtra("email", usuario.getEmail());
-        startActivity(telaInicial);
     }
 
 

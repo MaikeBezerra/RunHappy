@@ -1,10 +1,12 @@
 package com.example.runhappy.ui.usuario;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.data.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 
@@ -12,28 +14,33 @@ import java.util.List;
 
 public class UsuarioViewModel {
 
-    private Context context;
-    private UsuarioDAO usuarioDAO;
+    private UsuarioDAO dbSQLite;
+    private UsuarioDAO dbFirebase;
 
-    public UsuarioViewModel(Context context) {
+    public UsuarioViewModel(Activity activity, Context context) {
         SQLiteHandle handle = new SQLiteHandle(context);
 
-        this.context = context;
-        this.usuarioDAO = new UsuarioDAOSQLite(handle);
+        this.dbSQLite = new UsuarioDAOSQLite(handle);
+        this.dbFirebase = UsuarioDBFirebase.getInstance(activity, context);
     }
 
     public void adicionarUsuario(Usuario usuario){
-        usuarioDAO.addUsuario(usuario);
+        //dbSQLite.addUsuario(usuario);
+        dbFirebase.addUsuario(usuario);
         changeUsuario(usuario);
     }
 
+    public void logarUsuario(String email, String senha){
+        dbFirebase.logar(email, senha);
+    }
+
     public void editarUsuario(Usuario usuario) {
-        usuarioDAO.editUsuario(usuario);
+        dbSQLite.editUsuario(usuario);
         changeUsuario(usuario);
     }
 
     public Usuario findUsuarioByEmail(String email){
-        return usuarioDAO.findByEmail(email);
+        return dbSQLite.findByEmail(email);
     }
 
     private void changeUsuario(Usuario usuario){
@@ -41,6 +48,6 @@ public class UsuarioViewModel {
     }
 
     public List<Usuario> getUsuarios(){
-        return usuarioDAO.findAll();
+        return dbSQLite.findAll();
     }
 }

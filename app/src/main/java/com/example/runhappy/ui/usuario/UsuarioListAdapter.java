@@ -40,6 +40,13 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
 
         ImageButton button = holder.itemView.findViewById(R.id.img_seguir);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Tela de detalhes", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,6 +8,8 @@ public interface UsuarioDAO {
 
     void addUsuario(Usuario usuario);
 
+    void logar(String email, String senha);
+
     void adicionarSeguidor(Usuario usuario, String emailSeguido);
 
     void editUsuario(Usuario usuario);
