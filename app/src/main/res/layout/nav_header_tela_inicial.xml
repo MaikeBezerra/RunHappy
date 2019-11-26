@@ -14,8 +14,8 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:context=".TelaInicialActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemUsuario"
         android:layout_width="137dp"
         android:layout_height="90dp"
         android:layout_marginStart="0px"
@@ -28,7 +28,7 @@
         android:id="@+id/txtNomeUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="0dp"
         android:background="#00FFFFFF"
         android:foregroundTint="#00FFFFFF"
         android:paddingLeft="12dp"

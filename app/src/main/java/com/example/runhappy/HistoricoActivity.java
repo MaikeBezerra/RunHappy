@@ -26,7 +26,7 @@ public class HistoricoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rvCorrida);
+        recyclerView = findViewById(R.id.rvCorrida);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 

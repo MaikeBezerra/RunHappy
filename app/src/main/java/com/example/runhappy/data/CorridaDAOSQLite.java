@@ -41,7 +41,7 @@ public class CorridaDAOSQLite implements CorridaDAO{
         values.put("ritmo", corrida.getRitmoMedio());
         values.put("idUsuario", corrida.getCorredor());
 
-        database.update("corrida", values, " id = ?", new String[] { String.valueOf(corrida.getId()) });//        usuarioDAOSQLite.editUsuario(usuario);
+        database.update("corrida", values, " id = ?", new String[] { String.valueOf(corrida.getId()) });
     }
 
     @Override
@@ -92,8 +92,8 @@ public class CorridaDAOSQLite implements CorridaDAO{
 
         if (cursor.moveToFirst()) {
             do {
-                Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1),
-                        cursor.getInt(2), cursor.getInt(3));
+                Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
+                        cursor.getInt(3), cursor.getInt(4));
                 corridas.add(corrida);
             } while (cursor.moveToNext());
         }

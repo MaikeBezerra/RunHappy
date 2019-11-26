@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UsuarioDAOSQLite implements UsuarioDAO {
 
-    private SQLiteHandle handle = null;
+    private SQLiteHandle handle;
 
     public UsuarioDAOSQLite(SQLiteHandle handle){
         this.handle = handle;

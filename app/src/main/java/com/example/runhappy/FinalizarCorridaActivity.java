@@ -18,15 +18,14 @@ import java.text.DecimalFormat;
 
 public class FinalizarCorridaActivity extends AppCompatActivity {
 
-    private CorridaViewModel model;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalizar_corrida);
 
-        model = new CorridaViewModel(this);
-        model.setValuesAttributes();
+
     }
 
     public void cancelar(View view){
@@ -35,7 +34,7 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
 
     public void concluir(View view){
 
-        model.salvar();
+
 
         Intent confirmacaoCorrida = new Intent(this, ConfirmacaoFinalizarCorridaActivity.class);
         startActivity(confirmacaoCorrida);

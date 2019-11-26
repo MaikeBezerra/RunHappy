@@ -10,6 +10,12 @@ import android.widget.Chronometer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.runhappy.data.CorridaDAO;
+import com.example.runhappy.data.CorridaDAOSQLite;
+import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.model.Corrida;
 import com.example.runhappy.transactions.Constantes;
 
 public class AtividadeCorridaActivity extends AppCompatActivity {
@@ -22,11 +28,19 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
     private double distancia;
     private long tempo;
     private double ritmoMedio;
+    private CorridaDAO corridaDAO;
+    private SQLiteHandle handle;
+    private UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atividade_corrida);
+
+        handle = new SQLiteHandle(this);
+        corridaDAO = new CorridaDAOSQLite(handle);
+        usuarioDAO = new UsuarioDAOSQLite(handle);
+
         Button pause = (Button) findViewById(R.id.botao_pausar);
         milisegundos = 0;
         estaContando = true;
@@ -72,6 +86,9 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
 
         if (requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CONCLUIR){
             //a definir os comandos para cadastrar corrida
+            int idCorredor = usuarioDAO.findByEmail(TelaInicialActivity.getEmailUsuarioLogado()).getId();
+            Corrida corrida = new Corrida(distancia, tempo, ritmoMedio, idCorredor);
+            corridaDAO.adicionarCorrida(corrida);
 
             finish();
         } else if(requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CANCELAR){

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="4dp"
+    android:paddingStart="8dp"
     android:paddingTop="4dp"
-    android:paddingEnd="4dp"
+    android:paddingEnd="8dp"
     android:paddingBottom="4dp">
 
     <LinearLayout
@@ -41,8 +41,8 @@
 
         <ImageButton
             android:id="@+id/img_seguir"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/botao_iniciar_atividade"
             android:contentDescription="@string/botao_seguir"

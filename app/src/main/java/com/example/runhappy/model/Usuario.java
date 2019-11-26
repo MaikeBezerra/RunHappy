@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Usuario implements Parcelable {
@@ -16,7 +15,7 @@ public class Usuario implements Parcelable {
     private List<Corrida> corridas;
 
     public Usuario(){
-        this.corridas  = new ArrayList<Corrida>();
+        this.corridas  = new ArrayList<>();
     }
 
     public Usuario(String nome, String email, String senha){
