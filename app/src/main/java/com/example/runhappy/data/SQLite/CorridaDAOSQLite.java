@@ -1,15 +1,16 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.SQLite;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.runhappy.data.CorridaDAO;
 import com.example.runhappy.model.Corrida;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CorridaDAOSQLite implements CorridaDAO{
+public class CorridaDAOSQLite implements CorridaDAO {
 
     private SQLiteHandle handle;
 

@@ -1,10 +1,11 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.runhappy.R;
 import com.example.runhappy.ui.corrida.CorridaViewModel;
 
 public class ConfirmacaoFinalizarCorridaActivity extends AppCompatActivity {

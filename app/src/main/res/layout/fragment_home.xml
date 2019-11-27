@@ -13,7 +13,7 @@
 
         <fragment
             android:id="@+id/fragment2"
-            android:name="com.example.runhappy.MapsActivity"
+            android:name="com.example.runhappy.activity.MapsActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

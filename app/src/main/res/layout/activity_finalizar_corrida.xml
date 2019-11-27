@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".FinalizarCorridaActivity">
+    tools:context=".activity.FinalizarCorridaActivity">
 
     <TextView
         android:id="@+id/textView6"

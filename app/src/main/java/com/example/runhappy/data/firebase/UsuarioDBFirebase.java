@@ -1,4 +1,4 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.firebase;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,7 +36,7 @@ public class UsuarioDBFirebase implements UsuarioDAO {
         this.context = context;
         this.firestore = FirebaseFirestore.getInstance();
         this.usuarios = new ArrayList<>();
-        findAll();
+        findAllUser();
     }
 
     public static UsuarioDBFirebase getInstance(Context context) {
@@ -128,6 +129,10 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public List<Usuario> findAll() {
+        return null;
+    }
+    
+    private void findAllUser() {
         firestore.collection("usuarios")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -144,7 +149,6 @@ public class UsuarioDBFirebase implements UsuarioDAO {
                     }
                 });
 
-        return null;
     }
 
     @Override

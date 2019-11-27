@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.runhappy.HistoricoActivity;
+import com.example.runhappy.activity.HistoricoActivity;
 import com.example.runhappy.R;
-import com.example.runhappy.UsuarioListActivity;
+import com.example.runhappy.activity.UsuarioListActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

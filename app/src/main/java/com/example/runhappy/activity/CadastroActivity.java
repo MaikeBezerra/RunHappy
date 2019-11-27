@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.R;
+import com.example.runhappy.data.SQLite.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.data.SQLite.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.example.runhappy.ui.usuario.UsuarioFormViewModel;
@@ -27,8 +28,6 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 
 public class CadastroActivity extends AppCompatActivity {

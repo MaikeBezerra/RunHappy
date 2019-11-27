@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.runhappy.R;
+import com.example.runhappy.UsuarioObserver;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 import com.example.runhappy.ui.login.LoginViewModel;

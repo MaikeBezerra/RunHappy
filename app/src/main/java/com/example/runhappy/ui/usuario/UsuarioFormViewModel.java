@@ -7,8 +7,8 @@ import android.widget.EditText;
 import com.example.runhappy.R;
 import com.example.runhappy.data.UsuarioAuth;
 import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.UsuarioDBFirebase;
-import com.example.runhappy.data.UsuarioFirebaseAuth;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
+import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
 

@@ -1,20 +1,24 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.firebase;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.data.CorridaDAO;
 import com.example.runhappy.model.Corrida;
+import com.example.runhappy.model.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class CorridaDBFirebase implements CorridaDAO{
+public class CorridaDBFirebase implements CorridaDAO {
 
     private FirebaseFirestore firestore;
 
@@ -61,7 +65,32 @@ public class CorridaDBFirebase implements CorridaDAO{
     }
 
     @Override
-    public List<Corrida> findAll(String idUsuario) {
+    public List<Corrida> findAll(String id) {
+        firestore.collection("corridas")
+                .whereEqualTo("corredor", id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                    }
+                });
         return null;
+    }
+
+    public void corridasDosSeguidores(){
+        List<Usuario> seguidores = new ArrayList<>();
+        for (Usuario usuario : seguidores){
+            firestore.collection("corridas")
+                    .whereEqualTo("corredor", usuario.getId())
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        }
+                    });
+        }
+
     }
 }

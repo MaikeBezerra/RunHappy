@@ -1,10 +1,11 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.runhappy.R;
 import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.UsuarioDBFirebase;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.ui.navigation.HeaderNavigationViewModel;
 import com.example.runhappy.ui.navigation.NavigationViewModel;
 import com.google.android.material.navigation.NavigationView;

@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,9 @@ import android.widget.Chronometer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.runhappy.R;
 import com.example.runhappy.data.CorridaDAO;
-import com.example.runhappy.data.CorridaDBFirebase;
+import com.example.runhappy.data.firebase.CorridaDBFirebase;
 
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.transactions.Constantes;

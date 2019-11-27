@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.runhappy.R;
 import com.example.runhappy.data.CorridaDAO;
-import com.example.runhappy.data.CorridaDAOSQLite;
-import com.example.runhappy.data.SQLiteHandle;
-import com.example.runhappy.data.UsuarioDAOSQLite;
+import com.example.runhappy.data.SQLite.CorridaDAOSQLite;
+import com.example.runhappy.data.SQLite.SQLiteHandle;
+import com.example.runhappy.data.SQLite.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.corrida.CorridaAdapter;
 

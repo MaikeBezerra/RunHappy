@@ -1,10 +1,12 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.firebase;
 
 import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.data.UsuarioAuth;
+import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -12,7 +14,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class UsuarioFirebaseAuth implements UsuarioAuth{
+public class UsuarioFirebaseAuth implements UsuarioAuth {
 
     private FirebaseAuth auth;
     private Context context;

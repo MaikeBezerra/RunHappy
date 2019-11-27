@@ -3,7 +3,7 @@ package com.example.runhappy.ui.login;
 import android.content.Context;
 
 import com.example.runhappy.data.UsuarioAuth;
-import com.example.runhappy.data.UsuarioFirebaseAuth;
+import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
 
 public class LoginViewModel {
