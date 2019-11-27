@@ -3,16 +3,19 @@ package com.example.runhappy.data;
 import com.example.runhappy.model.Usuario;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UsuarioDAO {
 
     void addUsuario(Usuario usuario);
 
-    void logar(String email, String senha);
+    void logar(String id);
+
+    //void logar(String email, String senha);
 
     void adicionarSeguidor(Usuario usuario, String emailSeguido);
 
-    void editUsuario(Usuario usuario);
+    void editUsuario(String id, Map<String, Object> update);
 
     void deleteUsuario( int usuarioId);
 
@@ -23,4 +26,6 @@ public interface UsuarioDAO {
     List<Usuario> findAll();
 
     List<Usuario> findAllSeguidores(String myEmail);
+
+    List<Usuario> getUsuarios();
 }

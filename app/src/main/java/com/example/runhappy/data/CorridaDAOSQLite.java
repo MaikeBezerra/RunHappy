@@ -59,7 +59,7 @@ public class CorridaDAOSQLite implements CorridaDAO{
 
 
         if (cursor.moveToFirst()){
-            Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1),
+            Corrida corrida = new Corrida(cursor.getString(0), cursor.getInt(1),
                     cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
             return corrida;
         }
@@ -75,7 +75,7 @@ public class CorridaDAOSQLite implements CorridaDAO{
 
         if (cursor.moveToFirst()) {
             do {
-                Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1),
+                Corrida corrida = new Corrida(cursor.getString(0), cursor.getInt(1),
                         cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
                 corridas.add(corrida);
             } while (cursor.moveToNext());
@@ -92,7 +92,7 @@ public class CorridaDAOSQLite implements CorridaDAO{
 
         if (cursor.moveToFirst()) {
             do {
-                Corrida corrida = new Corrida(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
+                Corrida corrida = new Corrida(cursor.getString(0), cursor.getInt(1), cursor.getInt(2),
                         cursor.getInt(3), cursor.getString(4));
                 corridas.add(corrida);
             } while (cursor.moveToNext());

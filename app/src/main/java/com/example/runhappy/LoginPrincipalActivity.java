@@ -15,6 +15,7 @@ import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.ui.login.LoginViewModel;
 import com.example.runhappy.ui.usuario.UsuarioViewModel;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -166,7 +167,14 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        viewModel.logarUsuario(email.getText().toString(), senha.getText().toString());
+        LoginViewModel vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        vmLogin.logar(email.getText().toString(), senha.getText().toString());
+
+        if (vmLogin.getUsuario() != null) {
+            Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 

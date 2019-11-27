@@ -13,6 +13,7 @@ import com.example.runhappy.data.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.data.UsuarioDAOSQLite;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.ui.login.LoginViewModel;
 import com.example.runhappy.ui.usuario.UsuarioFormViewModel;
 import com.example.runhappy.ui.usuario.UsuarioViewModel;
 import com.facebook.CallbackManager;
@@ -32,6 +33,7 @@ import java.util.Arrays;
 
 public class CadastroActivity extends AppCompatActivity {
 
+    private LoginViewModel vmLogin;
     private UsuarioViewModel viewModel;
     private UsuarioFormViewModel formViewModel;
     CallbackManager callbackManager;
@@ -51,7 +53,8 @@ public class CadastroActivity extends AppCompatActivity {
         setTitle("Cadastro");
 
         viewModel = new UsuarioViewModel(this, getApplicationContext());
-        formViewModel = new UsuarioFormViewModel(this);
+        formViewModel = new UsuarioFormViewModel(this, getApplicationContext());
+        vmLogin = LoginViewModel.getInstance(getApplicationContext());
 
         handle = new SQLiteHandle(this);
         usuarioDAO = new UsuarioDAOSQLite(handle);
@@ -128,8 +131,13 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void cadastrar(View view) {
-        Usuario usuario = formViewModel.getUsuario();
-        viewModel.adicionarUsuario(usuario);
+        formViewModel.registrar();
+
+        if (vmLogin.getUsuario() != null) {
+            Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
