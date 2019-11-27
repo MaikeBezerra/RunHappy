@@ -131,7 +131,7 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     public List<Usuario> findAll() {
         return null;
     }
-    
+
     private void findAllUser() {
         firestore.collection("usuarios")
                 .get()
