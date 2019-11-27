@@ -5,20 +5,25 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UsuarioFirebaseAuth implements UsuarioAuth{
 
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth auth;
     private Context context;
     private static UsuarioFirebaseAuth instance;
 
+    private UsuarioDAO dbUsuario;
+
     private UsuarioFirebaseAuth(Context context){
         this.context = context;
-        this.firebaseAuth = FirebaseAuth.getInstance();
+        this.auth = FirebaseAuth.getInstance();
+        this.dbUsuario = UsuarioDBFirebase.getInstance(context);
     }
 
     public static UsuarioFirebaseAuth getInstance(Context context){
@@ -30,13 +35,18 @@ public class UsuarioFirebaseAuth implements UsuarioAuth{
     }
 
     @Override
-    public void registrar(String email, String senha) {
-        firebaseAuth.createUserWithEmailAndPassword(email, senha)
+    public void registrar(final String nome, final String email, final String senha) {
+        auth.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(context, "Sucess", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = auth.getCurrentUser();
+                            assert user != null;
+                            String id = user.getUid();
+
+                            Usuario usuario = new Usuario(id, nome, email, senha);
+                            dbUsuario.addUsuario(usuario);
                         } else {
                             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                         }
@@ -46,19 +56,18 @@ public class UsuarioFirebaseAuth implements UsuarioAuth{
 
     @Override
     public void login(String email, String senha) {
-        firebaseAuth.signInWithEmailAndPassword(email, senha);
-//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//                    @Override
-//                    public void onSuccess(AuthResult authResult) {
-//
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//
-//                    }
-//                });
+        auth.signInWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        String id = auth.getUid();
+                        dbUsuario.logar(id);
+                    } else {
+                        Toast.makeText(context, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                    }
+                    }
+                });
     }
 
     @Override
@@ -68,6 +77,11 @@ public class UsuarioFirebaseAuth implements UsuarioAuth{
 
     @Override
     public boolean isAutenticado() {
-        return firebaseAuth.getCurrentUser() != null;
+        return auth.getCurrentUser() != null;
+    }
+
+    @Override
+    public String idLoged() {
+        return auth.getUid();
     }
 }

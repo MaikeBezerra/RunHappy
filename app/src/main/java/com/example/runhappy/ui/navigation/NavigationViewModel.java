@@ -1,4 +1,4 @@
-package com.example.runhappy.ui.Navigation;
+package com.example.runhappy.ui.navigation;
 
 import android.app.Activity;
 import android.content.Context;

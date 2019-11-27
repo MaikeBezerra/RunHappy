@@ -2,7 +2,7 @@ package com.example.runhappy.model;
 
 public class Corrida {
 
-    private int id;
+    private String id;
     private double distancia;
     private long tempo;
     private double ritmoMedio;
@@ -17,16 +17,16 @@ public class Corrida {
         this.corredor = corredor;
     }
 
-    public Corrida(int id, double distancia, long tempo, double ritmoMedio, String corredor) {
+    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor) {
         this(distancia, tempo, ritmoMedio, corredor);
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

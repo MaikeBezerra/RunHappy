@@ -3,10 +3,13 @@ package com.example.runhappy;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.runhappy.ui.Navigation.HeaderNavigationViewModel;
-import com.example.runhappy.ui.Navigation.NavigationViewModel;
+import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.data.UsuarioDBFirebase;
+import com.example.runhappy.ui.navigation.HeaderNavigationViewModel;
+import com.example.runhappy.ui.navigation.NavigationViewModel;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,6 +31,9 @@ public class TelaInicialActivity extends AppCompatActivity{
     private DrawerLayout layout;
     ImageView imagemUsuario;
 
+    private FirebaseAuth auth;
+    UsuarioDAO dbUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +48,29 @@ public class TelaInicialActivity extends AppCompatActivity{
         layout.addDrawerListener(toggle);
         toggle.syncState();
 
+        auth = FirebaseAuth.getInstance();
+        dbUsuario = UsuarioDBFirebase.getInstance(getApplicationContext());
+        if (auth.getCurrentUser() != null){
+            auth = FirebaseAuth.getInstance();
+            FirebaseUser user = auth.getCurrentUser();
+
+            String id = user.getUid();
+            dbUsuario.logar(id);
+        }
+
+//        imagemUsuario = (CircleImageView) headerView.findViewById(R.id.imagemUsuario);
+//        Picasso.get().load((String)getIntent().getExtras().get("imagem")).into(imagemUsuario);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         NavigationView navigation = findViewById(R.id.nav_menu);
         navigation.setNavigationItemSelectedListener(new NavigationViewModel(this, getApplicationContext()));
 
         HeaderNavigationViewModel headerView = new HeaderNavigationViewModel(this, getApplicationContext(), navigation);
         headerView.inicializeParam();
-
-//        imagemUsuario = (CircleImageView) headerView.findViewById(R.id.imagemUsuario);
-//        Picasso.get().load((String)getIntent().getExtras().get("imagem")).into(imagemUsuario);
     }
 
     @Override

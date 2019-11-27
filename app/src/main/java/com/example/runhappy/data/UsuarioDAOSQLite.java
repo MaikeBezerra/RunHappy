@@ -8,6 +8,7 @@ import com.example.runhappy.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UsuarioDAOSQLite implements UsuarioDAO {
 
@@ -31,7 +32,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
     }
 
     @Override
-    public void logar(String email, String senha) {
+    public void logar(String id) {
 
     }
 
@@ -50,6 +51,10 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
     }
 
     @Override
+    public void editUsuario(String id, Map<String, Object> update) {
+
+    }
+
     public void editUsuario(Usuario usuario) {
         SQLiteDatabase database = handle.getWritableDatabase();
 
@@ -130,6 +135,11 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         }
         database.close();
         return usuarios;
+    }
+
+    @Override
+    public List<Usuario> getUsuarios() {
+        return null;
     }
 
 

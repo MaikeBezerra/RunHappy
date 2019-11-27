@@ -21,21 +21,12 @@ public class UsuarioViewModel {
         SQLiteHandle handle = new SQLiteHandle(context);
 
         this.dbSQLite = new UsuarioDAOSQLite(handle);
-        this.dbFirebase = UsuarioDBFirebase.getInstance(activity, context);
+        this.dbFirebase = UsuarioDBFirebase.getInstance(context);
     }
 
     public void adicionarUsuario(Usuario usuario){
         //dbSQLite.addUsuario(usuario);
         dbFirebase.addUsuario(usuario);
-        changeUsuario(usuario);
-    }
-
-    public void logarUsuario(String email, String senha){
-        dbFirebase.logar(email, senha);
-    }
-
-    public void editarUsuario(Usuario usuario) {
-        dbSQLite.editUsuario(usuario);
         changeUsuario(usuario);
     }
 
