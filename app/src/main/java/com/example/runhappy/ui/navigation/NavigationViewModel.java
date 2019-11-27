@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.FeedActivity;
 import com.example.runhappy.HistoricoActivity;
 import com.example.runhappy.R;
 import com.example.runhappy.UsuarioListActivity;
@@ -30,7 +31,12 @@ public class NavigationViewModel implements NavigationView.OnNavigationItemSelec
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_correr: {
-                Toast.makeText(context, "Menu 1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Correr", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.nav_feed: {
+                Intent feed = new Intent(context, FeedActivity.class);
+                activity.startActivity(feed);
                 break;
             }
             case R.id.nav_usuarios:
@@ -45,7 +51,7 @@ public class NavigationViewModel implements NavigationView.OnNavigationItemSelec
                 //historico.putExtra("usuario", usuario);
                 //startActivity(historico);
 
-                Toast.makeText(context, "Menu 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Histórico", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_sair: {

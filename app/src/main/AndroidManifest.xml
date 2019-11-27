@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".UsuarioListActivity"></activity>
+        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".Maps2Activity" />
+        <activity android:name=".InfoUsuarioActivity" />
+        <activity android:name=".UsuarioListActivity" />
         <activity android:name=".HistoricoActivity" />
         <activity android:name=".EditarUsuarioActivity" />
         <activity android:name=".ConfirmacaoFinalizarCorridaActivity" />
