@@ -10,6 +10,10 @@
             android:icon="@drawable/ic_directions_run_black_24dp"
             android:title="@string/menu_correr" />
         <item
+            android:id="@+id/nav_feed"
+            android:icon="@drawable/ic_feed"
+            android:title="Feed" />
+        <item
             android:id="@+id/nav_usuarios"
             android:icon="@drawable/ic_buscar"
             android:title="Buscar pessoas" />
