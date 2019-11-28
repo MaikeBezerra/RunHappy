@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.runhappy.R;
-import com.example.runhappy.activity.data.CorridaDAO;
-import com.example.runhappy.activity.data.firebase.CorridaDBFirebase;
+import com.example.runhappy.data.CorridaDAO;
+import com.example.runhappy.data.firebase.CorridaDBFirebase;
 
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.transactions.Constantes;

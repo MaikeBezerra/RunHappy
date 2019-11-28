@@ -1,4 +1,4 @@
-package com.example.runhappy.activity.data.firebase;
+package com.example.runhappy.data.firebase;
 
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnUsuarioListEventListener;

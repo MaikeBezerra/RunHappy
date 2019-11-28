@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.example.runhappy.LoginFacebookObserver;
 import com.example.runhappy.UsuarioObserver;
-import com.example.runhappy.activity.data.UsuarioAuth;
-import com.example.runhappy.activity.data.firebase.UsuarioFirebaseAuth;
+import com.example.runhappy.data.UsuarioAuth;
+import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
 

@@ -1,4 +1,4 @@
-package com.example.runhappy.activity.data;
+package com.example.runhappy.data;
 
 import com.example.runhappy.model.Usuario;
 

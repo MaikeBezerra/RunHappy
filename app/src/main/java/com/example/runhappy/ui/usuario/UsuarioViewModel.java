@@ -2,10 +2,10 @@ package com.example.runhappy.ui.usuario;
 
 import android.content.Context;
 
-import com.example.runhappy.activity.data.SQLite.SQLiteHandle;
-import com.example.runhappy.activity.data.UsuarioDAO;
-import com.example.runhappy.activity.data.SQLite.UsuarioDAOSQLite;
-import com.example.runhappy.activity.data.firebase.UsuarioDBFirebase;
+import com.example.runhappy.data.SQLite.SQLiteHandle;
+import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.data.SQLite.UsuarioDAOSQLite;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 

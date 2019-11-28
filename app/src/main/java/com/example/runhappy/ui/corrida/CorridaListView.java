@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
-import com.example.runhappy.activity.data.firebase.CorridaListFirebase;
+import com.example.runhappy.data.firebase.CorridaListFirebase;
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.presenter.OnCorridaListEventListener;
 import com.example.runhappy.ui.login.LoginViewModel;
