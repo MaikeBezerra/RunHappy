@@ -5,6 +5,8 @@ public interface UsuarioAuth {
 
     void login(String email, String senha);
 
+    void loginWithFacebook(String email, String senha);
+
     void logout();
 
     boolean isAutenticado();
