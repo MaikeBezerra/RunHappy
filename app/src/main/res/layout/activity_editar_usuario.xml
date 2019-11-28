@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".EditarUsuarioActivity">
+    tools:context=".activity.EditarUsuarioActivity">
 
     <fragment
         android:id="@+id/fragmentForm"

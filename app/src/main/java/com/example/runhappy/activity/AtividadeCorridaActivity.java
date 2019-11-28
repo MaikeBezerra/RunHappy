@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,9 @@ import android.widget.Chronometer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.runhappy.R;
 import com.example.runhappy.data.CorridaDAO;
-import com.example.runhappy.data.CorridaDBFirebase;
+import com.example.runhappy.data.firebase.CorridaDBFirebase;
 
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.transactions.Constantes;
@@ -39,7 +40,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atividade_corrida);
 
-        db = new CorridaDBFirebase();
+        db = new CorridaDBFirebase(getApplicationContext());
 
         Button pause = (Button) findViewById(R.id.botao_pausar);
         milisegundos = 0;
@@ -86,7 +87,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
 
         if (requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CONCLUIR){
 
-            vmLogin = LoginViewModel.getInstance(getApplicationContext());
+            vmLogin = new LoginViewModel(getApplicationContext());
             String idCorredor = vmLogin.idLogedUser();
             Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor);
             db.adicionarCorrida(corrida);

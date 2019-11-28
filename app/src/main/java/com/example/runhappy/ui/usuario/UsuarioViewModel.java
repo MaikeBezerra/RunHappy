@@ -3,10 +3,10 @@ package com.example.runhappy.ui.usuario;
 import android.app.Activity;
 import android.content.Context;
 
-import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.data.SQLite.SQLiteHandle;
 import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.UsuarioDAOSQLite;
-import com.example.runhappy.data.UsuarioDBFirebase;
+import com.example.runhappy.data.SQLite.UsuarioDAOSQLite;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 
@@ -17,11 +17,11 @@ public class UsuarioViewModel {
     private UsuarioDAO dbSQLite;
     private UsuarioDAO dbFirebase;
 
-    public UsuarioViewModel(Activity activity, Context context) {
+    public UsuarioViewModel( Context context ) {
         SQLiteHandle handle = new SQLiteHandle(context);
 
         this.dbSQLite = new UsuarioDAOSQLite(handle);
-        this.dbFirebase = UsuarioDBFirebase.getInstance(context);
+        this.dbFirebase = new UsuarioDBFirebase();
     }
 
     public void adicionarUsuario(Usuario usuario){

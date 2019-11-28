@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.example.runhappy.R;
-import com.example.runhappy.TelaInicialActivity;
 import com.example.runhappy.data.CorridaDAO;
-import com.example.runhappy.data.CorridaDAOSQLite;
-import com.example.runhappy.data.SQLiteHandle;
+import com.example.runhappy.data.SQLite.CorridaDAOSQLite;
+import com.example.runhappy.data.SQLite.SQLiteHandle;
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.usuario.UsuarioViewModel;
@@ -67,7 +66,7 @@ public class CorridaViewModel {
     }
 
     public void salvar(){
-        usuarioView = new UsuarioViewModel(activity, activity.getApplicationContext());
+        usuarioView = new UsuarioViewModel(activity.getApplicationContext());
         Usuario usuario = usuarioView.findUsuarioByEmail("Test");
 
         Corrida corrida = new Corrida((double) activity.getIntent().getExtras().get("distancia"), (long) activity.getIntent().getExtras().get("tempo"),

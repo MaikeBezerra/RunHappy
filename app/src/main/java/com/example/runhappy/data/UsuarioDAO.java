@@ -11,8 +11,6 @@ public interface UsuarioDAO {
 
     void logar(String id);
 
-    //void logar(String email, String senha);
-
     void adicionarSeguidor(Usuario usuario, String emailSeguido);
 
     void editUsuario(String id, Map<String, Object> update);
@@ -25,7 +23,7 @@ public interface UsuarioDAO {
 
     List<Usuario> findAll();
 
-    List<Usuario> findAllSeguidores(String myEmail);
+    List<Usuario> findAllSeguidores(String id);
 
     List<Usuario> getUsuarios();
 }

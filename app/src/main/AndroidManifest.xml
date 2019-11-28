@@ -17,16 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activity.UsuarioListActivity"></activity>
+        <activity android:name=".activity.HistoricoActivity" />
+        <activity android:name=".activity.EditarUsuarioActivity" />
+        <activity android:name=".activity.ConfirmacaoFinalizarCorridaActivity" />
+        <activity android:name=".activity.AtividadeCorridaActivity" />
+        <activity android:name=".activity.LoginPrincipalActivity" />
+        <activity android:name=".activity.FinalizarCorridaActivity" />
         <activity android:name=".FeedActivity"></activity>
         <activity android:name=".Maps2Activity" />
         <activity android:name=".InfoUsuarioActivity" />
-        <activity android:name=".UsuarioListActivity" />
-        <activity android:name=".HistoricoActivity" />
-        <activity android:name=".EditarUsuarioActivity" />
-        <activity android:name=".ConfirmacaoFinalizarCorridaActivity" />
-        <activity android:name=".AtividadeCorridaActivity" />
-        <activity android:name=".LoginPrincipalActivity" />
-        <activity android:name=".FinalizarCorridaActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,14 +40,14 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".TelaInicialActivity"
+            android:name=".activity.TelaInicialActivity"
             android:label="@string/title_activity_tela_inicial"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CadastroActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.CadastroActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

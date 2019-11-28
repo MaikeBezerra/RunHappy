@@ -1,20 +1,12 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-import com.example.runhappy.data.CorridaDAO;
-import com.example.runhappy.data.SQLiteHandle;
-import com.example.runhappy.data.UsuarioDAOSQLite;
-import com.example.runhappy.model.Corrida;
-import com.example.runhappy.model.Usuario;
-import com.example.runhappy.ui.corrida.CorridaViewModel;
-
-import java.text.DecimalFormat;
+import com.example.runhappy.R;
 
 public class FinalizarCorridaActivity extends AppCompatActivity {
 

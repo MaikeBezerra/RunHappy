@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.runhappy.R;
+import com.example.runhappy.UsuarioObserver;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.UsuarioChangeListener;
 import com.example.runhappy.ui.login.LoginViewModel;
@@ -22,7 +24,7 @@ public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioO
         setContentView(R.layout.activity_editar_usuario);
         setTitle("Editar Usuario");
 
-        vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        vmLogin = new LoginViewModel(getApplicationContext());
         vmForm = new UsuarioFormViewModel(this, getApplicationContext());
 
         UsuarioChangeListener.getInstance().adicionaObeserver(this);

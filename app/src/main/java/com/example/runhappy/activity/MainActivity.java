@@ -1,4 +1,4 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.runhappy.R;
 import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.UsuarioDBFirebase;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_boas_vindas);
 
         auth = FirebaseAuth.getInstance();
-        dbUsuario = UsuarioDBFirebase.getInstance(getApplicationContext());
+        dbUsuario = new UsuarioDBFirebase();
 
         if (auth.getCurrentUser() != null){
             Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);

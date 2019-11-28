@@ -1,4 +1,4 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.SQLite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

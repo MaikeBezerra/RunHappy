@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
-import com.example.runhappy.data.UsuarioDBFirebase;
+import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 
 import java.util.List;
@@ -60,6 +60,6 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
     }
 
     public List<Usuario> getUsuarios() {
-        return UsuarioDBFirebase.getInstance(context).getUsuarios();
+        return new UsuarioDBFirebase().getUsuarios();
     }
 }

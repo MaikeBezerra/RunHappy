@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.runhappy.EditarUsuarioActivity;
+import com.example.runhappy.activity.EditarUsuarioActivity;
 import com.example.runhappy.R;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
@@ -39,7 +39,7 @@ public class HeaderNavigationViewModel {
     }
 
     private void setNomeUsuario(){
-        Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+        Usuario usuario = new LoginViewModel(context).getUsuario();
 
         if(usuario != null) {
             nomeUsuario.setText(usuario.getNome());

@@ -1,4 +1,4 @@
-package com.example.runhappy.data;
+package com.example.runhappy.data.firebase;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.presenter.OnLoginEventListener;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,27 +25,18 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class UsuarioDBFirebase implements UsuarioDAO {
 
     public static final String COLECAO = "usuarios";
+    private OnLoginEventListener eventListener;
 
     private FirebaseFirestore firestore;
-    private static UsuarioDBFirebase instance;
-
-    private Context context;
 
     private List<Usuario> usuarios;
 
-    private UsuarioDBFirebase(Context context) {
-        this.context = context;
+    public UsuarioDBFirebase() {
+
         this.firestore = FirebaseFirestore.getInstance();
+
         this.usuarios = new ArrayList<>();
-        findAll();
-    }
-
-    public static UsuarioDBFirebase getInstance(Context context) {
-        if (instance == null) {
-            instance = new UsuarioDBFirebase(context);
-        }
-
-        return instance;
+        findAllUser();
     }
 
     @Override
@@ -53,14 +46,13 @@ public class UsuarioDBFirebase implements UsuarioDAO {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(context, "Usuario adicionado", Toast.LENGTH_SHORT).show();
-                        LoginViewModel.getInstance(context).setUsuario(usuario);
+                        Log.i(TAG, "Usuario adicionado");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG , "Error");
                     }
                 });
 
@@ -75,13 +67,13 @@ public class UsuarioDBFirebase implements UsuarioDAO {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<Usuario> usuario = queryDocumentSnapshots.toObjects(Usuario.class);
-                        LoginViewModel.getInstance(context).setUsuario(usuario.get(0));
+                        //eventListener.onUsuarioLoged(usuario.get(0));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Error ao busca usuario", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error ao busca usuario");
                     }
                 });
     }
@@ -100,7 +92,7 @@ public class UsuarioDBFirebase implements UsuarioDAO {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully updated!");
-                        logar(id);
+                        //logar(id);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -128,23 +120,22 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public List<Usuario> findAll() {
+        return null;
+    }
+
+    private void findAllUser() {
         firestore.collection("usuarios")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         usuarios.clear();
-                        String id = LoginViewModel.getInstance(context).idLogedUser();
+                       // String id = LoginViewModel.getInstance(context).idLogedUser();
+                         usuarios = queryDocumentSnapshots.toObjects(Usuario.class);
 
-                        for (Usuario usuario : queryDocumentSnapshots.toObjects(Usuario.class)) {
-                            if (!id.equals(usuario.getId())) {
-                                usuarios.add(usuario);
-                            }
-                        }
                     }
                 });
 
-        return null;
     }
 
     @Override
