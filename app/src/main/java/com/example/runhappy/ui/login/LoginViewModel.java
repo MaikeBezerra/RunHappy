@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.example.runhappy.LoginFacebookObserver;
 import com.example.runhappy.UsuarioObserver;
-import com.example.runhappy.data.UsuarioAuth;
-import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
+import com.example.runhappy.activity.data.UsuarioAuth;
+import com.example.runhappy.activity.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
 
@@ -20,16 +20,25 @@ public class LoginViewModel implements OnLoginEventListener {
     private UsuarioAuth auth;
     private Context context;
 
+    public static LoginViewModel instance;
+
     private List<UsuarioObserver> observers;
     private List<LoginFacebookObserver> facebookObservers;
 
-    public LoginViewModel(Context context){
+    private LoginViewModel(Context context){
         this.context = context;
         auth = new UsuarioFirebaseAuth( this );
         observers = new ArrayList<>();
         facebookObservers = new ArrayList<>();
     }
 
+    public static LoginViewModel getInstance(Context context) {
+        if(instance == null){
+            instance = new LoginViewModel(context);
+        }
+
+        return instance;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -37,6 +46,14 @@ public class LoginViewModel implements OnLoginEventListener {
 
     private void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public void setIdLoged(){
+
+        if (idLogedUser() != null) {
+            auth.setUsuarioLoged(idLogedUser());
+        }
+
     }
 
     public String idLogedUser(){

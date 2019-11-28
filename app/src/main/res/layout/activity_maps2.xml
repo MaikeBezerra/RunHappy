@@ -6,4 +6,4 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Maps2Activity" />
+    tools:context=".activity.Maps2Activity" />

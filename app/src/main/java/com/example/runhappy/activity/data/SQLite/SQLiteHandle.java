@@ -1,10 +1,8 @@
-package com.example.runhappy.data.SQLite;
+package com.example.runhappy.activity.data.SQLite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
 
 public class SQLiteHandle extends SQLiteOpenHelper {
 

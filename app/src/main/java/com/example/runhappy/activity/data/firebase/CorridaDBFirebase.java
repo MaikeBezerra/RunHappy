@@ -1,11 +1,11 @@
-package com.example.runhappy.data.firebase;
+package com.example.runhappy.activity.data.firebase;
 
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.runhappy.data.CorridaDAO;
+import com.example.runhappy.activity.data.CorridaDAO;
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
@@ -32,7 +32,7 @@ public class CorridaDBFirebase implements CorridaDAO {
         this.corridas = new ArrayList<>();
         this.context = context;
 
-        LoginViewModel vmLogin = new LoginViewModel(context);
+        LoginViewModel vmLogin = LoginViewModel.getInstance(context);
         findAllCorridas(vmLogin.idLogedUser());
     }
 

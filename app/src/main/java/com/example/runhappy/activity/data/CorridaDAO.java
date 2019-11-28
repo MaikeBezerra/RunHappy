@@ -1,4 +1,4 @@
-package com.example.runhappy.data;
+package com.example.runhappy.activity.data;
 
 import com.example.runhappy.model.Corrida;
 

@@ -1,15 +1,13 @@
-package com.example.runhappy.data.firebase;
+package com.example.runhappy.activity.data.firebase;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.activity.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
-import com.example.runhappy.ui.login.LoginViewModel;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -17,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -79,8 +78,19 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
-    public void adicionarSeguidor(Usuario usuario, String emailSeguido) {
+    public void adicionarSeguidor(Usuario usuario, String idSeguido) {
+        Map<String, Object> seguir = new HashMap<>();
+        seguir.put("idSeguidor", usuario.getId());
+        seguir.put("idSeguido", idSeguido);
 
+        firestore.collection("seguidores")
+                .add(seguir)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+
+                    }
+                });
     }
 
     @Override
@@ -143,8 +153,4 @@ public class UsuarioDBFirebase implements UsuarioDAO {
         return null;
     }
 
-    @Override
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
 }

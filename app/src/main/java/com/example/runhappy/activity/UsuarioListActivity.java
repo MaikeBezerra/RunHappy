@@ -1,26 +1,25 @@
 package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.runhappy.R;
-import com.example.runhappy.ui.usuario.UsuarioListAdapter;
+import com.example.runhappy.ui.usuario.UsuarioListView;
 
 public class UsuarioListActivity extends AppCompatActivity {
+
+    private UsuarioListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_list);
 
-        RecyclerView recyclerView = findViewById(R.id.usuarioListView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        View rootView = findViewById( android.R.id.content );
+        listView = new UsuarioListView(getApplicationContext());
+        listView.inicialize(rootView);
 
-        UsuarioListAdapter adapter = new UsuarioListAdapter(getApplicationContext(), null);
-        recyclerView.setAdapter(adapter);
     }
 }
