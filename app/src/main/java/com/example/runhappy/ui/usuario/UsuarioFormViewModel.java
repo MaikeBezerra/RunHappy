@@ -5,10 +5,8 @@ import android.content.Context;
 import android.widget.EditText;
 
 import com.example.runhappy.R;
-import com.example.runhappy.data.UsuarioAuth;
-import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.firebase.UsuarioDBFirebase;
-import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
+import com.example.runhappy.activity.data.UsuarioDAO;
+import com.example.runhappy.activity.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
 
@@ -31,7 +29,7 @@ public class UsuarioFormViewModel {
         this.senha = tela.findViewById(R.id.txtSenha);
 
         this.context = context;
-        this.vmLogin = new LoginViewModel(context);
+        this.vmLogin = LoginViewModel.getInstance(context);
     }
 
     public void registrar() {

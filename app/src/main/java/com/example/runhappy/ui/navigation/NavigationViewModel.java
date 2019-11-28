@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.runhappy.activity.HistoricoActivity;
-import com.example.runhappy.FeedActivity;
+import com.example.runhappy.activity.FeedActivity;
 import com.example.runhappy.R;
 import com.example.runhappy.activity.UsuarioListActivity;
 import com.google.android.material.navigation.NavigationView;

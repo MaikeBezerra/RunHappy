@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
-import com.example.runhappy.data.firebase.UsuarioDBFirebase;
 import com.example.runhappy.model.Usuario;
 
 import java.util.List;
@@ -19,9 +18,14 @@ import java.util.List;
 public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> {
 
     private Context context;
+    private UsuarioListView listView;
+
+    private List<Usuario> usuarios;
 
     public UsuarioListAdapter(Context context, List usuarios){
         this.context = context;
+        this.usuarios = usuarios;
+        this.listView = new UsuarioListView(context);
     }
 
     @NonNull
@@ -36,7 +40,8 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull UsuarioListHolder holder, int position) {
-        holder.txtUsuarioNome.setText(getUsuarios().get(position).getNome());
+
+        holder.txtUsuarioNome.setText(usuarios.get(position).getNome());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +50,12 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
             }
         });
 
-        ImageButton button = holder.itemView.findViewById(R.id.img_seguir);
-        button.setOnClickListener(new View.OnClickListener() {
+        final String id = usuarios.get(position).getId();
+        ImageButton btnSeguir = holder.itemView.findViewById(R.id.img_seguir);
+        btnSeguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listView.seguir(id);
                 Toast.makeText(context, "Seguir", Toast.LENGTH_SHORT).show();
             }
         });
@@ -56,10 +63,7 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
 
     @Override
     public int getItemCount() {
-        return getUsuarios().size();
+        return usuarios.size();
     }
 
-    public List<Usuario> getUsuarios() {
-        return new UsuarioDBFirebase().getUsuarios();
-    }
 }

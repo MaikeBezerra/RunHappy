@@ -1,5 +1,6 @@
 package com.example.runhappy.ui.login;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,16 +10,12 @@ import android.widget.Toast;
 
 import com.example.runhappy.LoginFacebookObserver;
 import com.example.runhappy.R;
-import com.example.runhappy.UsuarioObserver;
-import com.example.runhappy.activity.LoginPrincipalActivity;
-import com.example.runhappy.model.Usuario;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -46,14 +43,13 @@ public class LoginFacebookView implements LoginFacebookObserver {
 
     public LoginFacebookView(Context context){
         this.context = context;
+        callbackManager = CallbackManager.Factory.create();
     }
 
     public void inicialize(View view){
 
-        vmLogin = new LoginViewModel(context);
+        vmLogin = LoginViewModel.getInstance(context);
         vmLogin.addFacebookObserver( this );
-
-        callbackManager = CallbackManager.Factory.create();
 
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setPermissions(Arrays.asList("public_profile", "email"));
@@ -138,5 +134,9 @@ public class LoginFacebookView implements LoginFacebookObserver {
     @Override
     public void onNotLoged() {
         vmLogin.registrar(name, email1, acessToken);
+    }
+
+    public CallbackManager getCallbackManager() {
+        return callbackManager;
     }
 }

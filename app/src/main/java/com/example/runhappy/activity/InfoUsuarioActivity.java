@@ -1,9 +1,11 @@
-package com.example.runhappy;
+package com.example.runhappy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.runhappy.R;
 
 public class InfoUsuarioActivity extends AppCompatActivity {
 

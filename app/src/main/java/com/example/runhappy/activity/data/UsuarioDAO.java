@@ -1,4 +1,4 @@
-package com.example.runhappy.data;
+package com.example.runhappy.activity.data;
 
 import com.example.runhappy.model.Usuario;
 
@@ -25,5 +25,4 @@ public interface UsuarioDAO {
 
     List<Usuario> findAllSeguidores(String id);
 
-    List<Usuario> getUsuarios();
 }

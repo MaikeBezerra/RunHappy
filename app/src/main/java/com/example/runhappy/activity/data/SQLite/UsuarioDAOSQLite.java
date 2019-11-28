@@ -1,11 +1,10 @@
-package com.example.runhappy.data.SQLite;
+package com.example.runhappy.activity.data.SQLite;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.runhappy.data.SQLite.SQLiteHandle;
-import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.activity.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 
 import java.util.ArrayList;
@@ -138,11 +137,5 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         database.close();
         return usuarios;
     }
-
-    @Override
-    public List<Usuario> getUsuarios() {
-        return null;
-    }
-
 
 }

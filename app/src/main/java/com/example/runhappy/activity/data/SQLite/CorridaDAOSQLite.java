@@ -1,10 +1,10 @@
-package com.example.runhappy.data.SQLite;
+package com.example.runhappy.activity.data.SQLite;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.runhappy.data.CorridaDAO;
+import com.example.runhappy.activity.data.CorridaDAO;
 import com.example.runhappy.model.Corrida;
 
 import java.util.ArrayList;

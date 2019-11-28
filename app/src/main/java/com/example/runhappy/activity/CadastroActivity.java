@@ -20,7 +20,6 @@ public class CadastroActivity extends AppCompatActivity implements UsuarioObserv
     private LoginViewModel vmLogin;
     private UsuarioViewModel viewModel;
     private UsuarioFormViewModel formViewModel;
-    CallbackManager callbackManager;
 
     private LoginFacebookView vFacebook;
 
@@ -32,19 +31,19 @@ public class CadastroActivity extends AppCompatActivity implements UsuarioObserv
 
         viewModel = new UsuarioViewModel(getApplicationContext());
         formViewModel = new UsuarioFormViewModel(this, getApplicationContext());
-        vmLogin = new LoginViewModel(getApplicationContext());
-        vmLogin.addObserver( this );
 
-        callbackManager = CallbackManager.Factory.create();
+        vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        vmLogin.addObserver( this );
 
         View rootView = findViewById(android.R.id.content);
         vFacebook = new LoginFacebookView(getApplicationContext());
-        vFacebook.inicialize(rootView);
+        vFacebook.inicialize( rootView );
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        vFacebook.getCallbackManager().onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 

@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.runhappy.R;
-import com.example.runhappy.data.UsuarioDAO;
-import com.example.runhappy.data.firebase.UsuarioDBFirebase;
+import com.example.runhappy.UsuarioObserver;
+import com.example.runhappy.activity.data.UsuarioDAO;
+import com.example.runhappy.activity.data.firebase.UsuarioDBFirebase;
+import com.example.runhappy.model.Usuario;
+import com.example.runhappy.ui.login.LoginViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UsuarioObserver {
 
     FirebaseAuth auth;
     UsuarioDAO dbUsuario;
@@ -24,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         dbUsuario = new UsuarioDBFirebase();
 
-        if (auth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
-            startActivity(intent);
-        }
+        LoginViewModel vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        vmLogin.addObserver( this );
+        vmLogin.setIdLoged();
+
     }
 
     public void cadastrar(View view){
@@ -40,4 +43,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(login);
     }
 
+    @Override
+    public void onChangeUsuario(Usuario usuario) {
+        if(usuario != null) {
+            Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
+            startActivity(intent);
+        }
+    }
 }

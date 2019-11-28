@@ -24,9 +24,9 @@
         <activity android:name=".activity.AtividadeCorridaActivity" />
         <activity android:name=".activity.LoginPrincipalActivity" />
         <activity android:name=".activity.FinalizarCorridaActivity" />
-        <activity android:name=".FeedActivity"></activity>
-        <activity android:name=".Maps2Activity" />
-        <activity android:name=".InfoUsuarioActivity" />
+        <activity android:name=".activity.FeedActivity"></activity>
+        <activity android:name=".activity.Maps2Activity" />
+        <activity android:name=".activity.InfoUsuarioActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

@@ -1,11 +1,11 @@
-package com.example.runhappy.data.firebase;
+package com.example.runhappy.activity.data.firebase;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.runhappy.data.UsuarioAuth;
-import com.example.runhappy.data.UsuarioDAO;
+import com.example.runhappy.activity.data.UsuarioAuth;
+import com.example.runhappy.activity.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,8 +47,9 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                             String id = user.getUid();
 
                             Usuario usuario = new Usuario(id, nome, email, senha);
-                            eventListener.onUsuarioLoged(usuario);
                             dbUsuario.addUsuario(usuario);
+                            eventListener.onUsuarioLoged(usuario);
+
                         } else {
                             Log.e(TAG, "Error nos campos");
                         }
@@ -90,6 +91,8 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                 });
     }
 
+
+
     @Override
     public void loginWithFacebook(String email, String senha) {
         auth.signInWithEmailAndPassword(email, senha)
@@ -98,25 +101,8 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             String id = auth.getUid();
+                            setUsuarioLoged(id);
 
-                            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-
-                            firestore.collection("usuarios")
-                                    .whereEqualTo("id", id)
-                                    .get()
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                            List<Usuario> usuario = queryDocumentSnapshots.toObjects(Usuario.class);
-                                            eventListener.onUsuarioLoged(usuario.get(0));
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.e(TAG, "Error ao busca usuario");
-                                        }
-                                    });
                         } else {
                             Log.e(TAG, "Authentication failed!");
                         }
@@ -127,6 +113,30 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                         eventListener.onUsuarioFacebookNotLoged();
                     }
         });
+    }
+
+    @Override
+    public void setUsuarioLoged(String id) {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+        firestore.collection("usuarios")
+                .whereEqualTo("id", id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<Usuario> usuario = queryDocumentSnapshots.toObjects(Usuario.class);
+                        if (usuario != null){
+                            eventListener.onUsuarioLoged(usuario.get(0));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "Error ao busca usuario");
+                    }
+                });
     }
 
     @Override
