@@ -28,7 +28,6 @@ import java.util.Arrays;
 
 public class LoginFacebookView implements LoginFacebookObserver {
 
-    private CallbackManager callbackManager;
     private LoginButton loginButton;
     private ProgressDialog mDialog;
 
@@ -43,10 +42,9 @@ public class LoginFacebookView implements LoginFacebookObserver {
 
     public LoginFacebookView(Context context){
         this.context = context;
-        callbackManager = CallbackManager.Factory.create();
     }
 
-    public void inicialize(View view){
+    public void inicialize(View view, CallbackManager callbackManager){
 
         vmLogin = LoginViewModel.getInstance(context);
         vmLogin.addFacebookObserver( this );
@@ -61,14 +59,10 @@ public class LoginFacebookView implements LoginFacebookObserver {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-                mDialog = new ProgressDialog(context);
-                mDialog.setMessage("Retrieving data...");
-                mDialog.show();
                 acessToken = loginResult.getAccessToken().getToken();
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        mDialog.dismiss();
                         Log.d("response", response.toString());
                         getFacebookData(object);
                         try {
@@ -136,7 +130,4 @@ public class LoginFacebookView implements LoginFacebookObserver {
         vmLogin.registrar(name, email1, acessToken);
     }
 
-    public CallbackManager getCallbackManager() {
-        return callbackManager;
-    }
 }

@@ -13,13 +13,14 @@ import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginFacebookView;
 import com.example.runhappy.ui.login.LoginViewModel;
+import com.facebook.CallbackManager;
 
 public class LoginPrincipalActivity extends AppCompatActivity implements UsuarioObserver {
 
     private UsuarioDAO usuarioDAO;
     private EditText email;
     private EditText senha;
-
+    private CallbackManager callbackManager;
     private LoginViewModel vmLogin;
     private LoginFacebookView vFacebook;
 
@@ -35,9 +36,10 @@ public class LoginPrincipalActivity extends AppCompatActivity implements Usuario
         vmLogin = LoginViewModel.getInstance(getApplicationContext());
         vmLogin.addObserver( this );
 
-        View rootView = findViewById( android.R.id.content );
+        callbackManager = CallbackManager.Factory.create();
+        View rootView = findViewById(android.R.id.content);
         vFacebook = new LoginFacebookView(getApplicationContext());
-        vFacebook.inicialize( rootView );
+        vFacebook.inicialize( rootView , callbackManager );
 
     }
 
@@ -45,7 +47,7 @@ public class LoginPrincipalActivity extends AppCompatActivity implements Usuario
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        vFacebook.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     public void login(View view) {
