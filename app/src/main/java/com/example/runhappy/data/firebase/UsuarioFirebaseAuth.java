@@ -1,11 +1,11 @@
-package com.example.runhappy.activity.data.firebase;
+package com.example.runhappy.data.firebase;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.runhappy.activity.data.UsuarioAuth;
-import com.example.runhappy.activity.data.UsuarioDAO;
+import com.example.runhappy.data.UsuarioAuth;
+import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;

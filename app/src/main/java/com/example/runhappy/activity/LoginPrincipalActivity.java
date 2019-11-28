@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.runhappy.R;
 import com.example.runhappy.UsuarioObserver;
-import com.example.runhappy.activity.data.UsuarioDAO;
+import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginFacebookView;
 import com.example.runhappy.ui.login.LoginViewModel;

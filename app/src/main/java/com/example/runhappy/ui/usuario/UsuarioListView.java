@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
-import com.example.runhappy.activity.data.firebase.UsuarioListFirebase;
+import com.example.runhappy.data.firebase.UsuarioListFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnUsuarioListEventListener;
 import com.example.runhappy.ui.login.LoginViewModel;
