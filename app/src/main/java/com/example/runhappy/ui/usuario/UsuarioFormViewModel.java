@@ -22,7 +22,6 @@ public class UsuarioFormViewModel {
     private EditText senha;
     private Context context;
 
-    private UsuarioAuth auth;
     private UsuarioDAO db;
     private LoginViewModel vmLogin;
 
