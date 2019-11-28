@@ -39,8 +39,6 @@ public class CorridaListView implements OnCorridaListEventListener {
         String id = vmLogin.idLogedUser();
         dbList.findAllByCorredor(id);
 
-        recyclerView.setAdapter(corridaAdapter);
-
     }
 
     @Override
@@ -51,5 +49,6 @@ public class CorridaListView implements OnCorridaListEventListener {
 
     private void setCorridas(){
         this.corridaAdapter = new CorridaAdapter(corridas);
+        recyclerView.setAdapter(corridaAdapter);
     }
 }
