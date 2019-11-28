@@ -2,10 +2,15 @@ package com.example.runhappy.ui.login;
 
 import android.content.Context;
 
+import com.example.runhappy.LoginFacebookObserver;
+import com.example.runhappy.UsuarioObserver;
 import com.example.runhappy.data.UsuarioAuth;
 import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginViewModel implements OnLoginEventListener {
 
@@ -15,9 +20,14 @@ public class LoginViewModel implements OnLoginEventListener {
     private UsuarioAuth auth;
     private Context context;
 
+    private List<UsuarioObserver> observers;
+    private List<LoginFacebookObserver> facebookObservers;
+
     public LoginViewModel(Context context){
         this.context = context;
         auth = new UsuarioFirebaseAuth( this );
+        observers = new ArrayList<>();
+        facebookObservers = new ArrayList<>();
     }
 
 
@@ -39,8 +49,30 @@ public class LoginViewModel implements OnLoginEventListener {
 
     public void registrar(String nome, String email, String senha){ auth.registrar(nome, email, senha);}
 
+    public void addObserver(UsuarioObserver observer){
+        observers.add(observer);
+    }
+
+    public void addFacebookObserver(LoginFacebookObserver observer){
+        facebookObservers.add(observer);
+    }
+
     @Override
     public void onUsuarioLoged(Usuario usuario) {
         setUsuario(usuario);
+        update();
+    }
+
+    @Override
+    public void onUsuarioFacebookNotLoged() {
+        for (LoginFacebookObserver observer : facebookObservers){
+            observer.onNotLoged();
+        }
+    }
+
+    private void update(){
+        for ( UsuarioObserver observer: observers) {
+            observer.onChangeUsuario(usuario);
+        }
     }
 }

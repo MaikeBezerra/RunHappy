@@ -1,7 +1,6 @@
 package com.example.runhappy.data.firebase;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -89,6 +88,45 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                     }
                     }
                 });
+    }
+
+    @Override
+    public void loginWithFacebook(String email, String senha) {
+        auth.signInWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            String id = auth.getUid();
+
+                            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+                            firestore.collection("usuarios")
+                                    .whereEqualTo("id", id)
+                                    .get()
+                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                            List<Usuario> usuario = queryDocumentSnapshots.toObjects(Usuario.class);
+                                            eventListener.onUsuarioLoged(usuario.get(0));
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.e(TAG, "Error ao busca usuario");
+                                        }
+                                    });
+                        } else {
+                            Log.e(TAG, "Authentication failed!");
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        eventListener.onUsuarioFacebookNotLoged();
+                    }
+        });
     }
 
     @Override
