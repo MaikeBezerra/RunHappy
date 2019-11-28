@@ -11,6 +11,7 @@ import com.example.runhappy.data.CorridaDAO;
 import com.example.runhappy.data.SQLite.CorridaDAOSQLite;
 import com.example.runhappy.data.SQLite.SQLiteHandle;
 import com.example.runhappy.data.SQLite.UsuarioDAOSQLite;
+import com.example.runhappy.data.firebase.CorridaDBFirebase;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.corrida.CorridaAdapter;
 
@@ -19,7 +20,6 @@ public class HistoricoActivity extends AppCompatActivity {
     private CorridaAdapter corridaAdapter;
     private Usuario usuario;
 
-    private UsuarioDAOSQLite usuarioDAOSQLite;
     private CorridaDAO corridaDAO;
 
     @Override
@@ -31,12 +31,9 @@ public class HistoricoActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        SQLiteHandle handle = new SQLiteHandle(getApplicationContext());
-        usuarioDAOSQLite = new UsuarioDAOSQLite(handle);
-        corridaDAO = new CorridaDAOSQLite(handle);
+        corridaDAO = new CorridaDBFirebase(getApplicationContext());
 
-        usuario = usuarioDAOSQLite.findByEmail("teste");
-        corridaAdapter = new CorridaAdapter(corridaDAO.findAll(usuario.getId()));
+        corridaAdapter = new CorridaAdapter(corridaDAO.getCorridas());
         recyclerView.setAdapter(corridaAdapter);
     }
 }

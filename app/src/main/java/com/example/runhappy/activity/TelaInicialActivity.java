@@ -50,7 +50,7 @@ public class TelaInicialActivity extends AppCompatActivity{
         toggle.syncState();
 
         auth = FirebaseAuth.getInstance();
-        dbUsuario = UsuarioDBFirebase.getInstance(getApplicationContext());
+        dbUsuario = new UsuarioDBFirebase();
         if (auth.getCurrentUser() != null){
             auth = FirebaseAuth.getInstance();
             FirebaseUser user = auth.getCurrentUser();

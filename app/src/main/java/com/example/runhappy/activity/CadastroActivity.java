@@ -51,12 +51,13 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         setTitle("Cadastro");
 
-        viewModel = new UsuarioViewModel(this, getApplicationContext());
+        viewModel = new UsuarioViewModel(getApplicationContext());
         formViewModel = new UsuarioFormViewModel(this, getApplicationContext());
-        vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        vmLogin = new LoginViewModel(getApplicationContext());
 
         handle = new SQLiteHandle(this);
         usuarioDAO = new UsuarioDAOSQLite(handle);
+
         callbackManager = CallbackManager.Factory.create();
 
         loginButton = (LoginButton) findViewById(R.id.login_button2);

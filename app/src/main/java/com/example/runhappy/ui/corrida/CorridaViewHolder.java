@@ -19,9 +19,9 @@ public class CorridaViewHolder extends RecyclerView.ViewHolder {
     public CorridaViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        tvDistancia = (TextView) itemView.findViewById(R.id.textViewDistancia);
-        tvTempo = (TextView) itemView.findViewById(R.id.textViewTempo);
-        tvRitmo = (TextView) itemView.findViewById(R.id.textViewRitmo);
-        tvIdCorrida = (TextView) itemView.findViewById(R.id.textViewIdCorrida);
+        tvDistancia =  itemView.findViewById(R.id.textViewDistancia);
+        tvTempo =  itemView.findViewById(R.id.textViewTempo);
+        tvRitmo = itemView.findViewById(R.id.textViewRitmo);
+        tvIdCorrida = itemView.findViewById(R.id.textViewIdCorrida);
     }
 }

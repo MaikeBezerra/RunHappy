@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_boas_vindas);
 
         auth = FirebaseAuth.getInstance();
-        dbUsuario = UsuarioDBFirebase.getInstance(getApplicationContext());
+        dbUsuario = new UsuarioDBFirebase();
 
         if (auth.getCurrentUser() != null){
             Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);

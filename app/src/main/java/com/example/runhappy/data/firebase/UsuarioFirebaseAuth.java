@@ -1,6 +1,6 @@
 package com.example.runhappy.data.firebase;
 
-import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -8,32 +8,26 @@ import androidx.annotation.NonNull;
 import com.example.runhappy.data.UsuarioAuth;
 import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.presenter.OnLoginEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class UsuarioFirebaseAuth implements UsuarioAuth {
 
+    private OnLoginEventListener eventListener;
     private FirebaseAuth auth;
-    private Context context;
-    private static UsuarioFirebaseAuth instance;
 
     private UsuarioDAO dbUsuario;
 
-    private UsuarioFirebaseAuth(Context context){
-        this.context = context;
+    public UsuarioFirebaseAuth( OnLoginEventListener eventListener ){
+        this.eventListener = eventListener;
         this.auth = FirebaseAuth.getInstance();
-        this.dbUsuario = UsuarioDBFirebase.getInstance(context);
-    }
-
-    public static UsuarioFirebaseAuth getInstance(Context context){
-        if (instance == null) {
-            instance = new UsuarioFirebaseAuth(context);
-        }
-
-        return instance;
+        this.dbUsuario = new UsuarioDBFirebase();
     }
 
     @Override
@@ -48,9 +42,10 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                             String id = user.getUid();
 
                             Usuario usuario = new Usuario(id, nome, email, senha);
+                            eventListener.onUsuarioLoged(usuario);
                             dbUsuario.addUsuario(usuario);
                         } else {
-                            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "Error nos campos");
                         }
                     }
                 });
@@ -66,7 +61,7 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                         String id = auth.getUid();
                         dbUsuario.logar(id);
                     } else {
-                        Toast.makeText(context, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Authentication failed!");
                     }
                     }
                 });

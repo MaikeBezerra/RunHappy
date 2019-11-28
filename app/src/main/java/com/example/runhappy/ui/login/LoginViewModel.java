@@ -5,33 +5,27 @@ import android.content.Context;
 import com.example.runhappy.data.UsuarioAuth;
 import com.example.runhappy.data.firebase.UsuarioFirebaseAuth;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.presenter.OnLoginEventListener;
 
-public class LoginViewModel {
+public class LoginViewModel implements OnLoginEventListener {
 
     private Usuario usuario;
-    private UsuarioAuth auth;
+    private String idLoged;
 
-    public static LoginViewModel instance;
+    private UsuarioAuth auth;
     private Context context;
 
-    private LoginViewModel(Context context){
+    public LoginViewModel(Context context){
         this.context = context;
-        auth = UsuarioFirebaseAuth.getInstance(context);
+        auth = new UsuarioFirebaseAuth( this );
     }
 
-    public static LoginViewModel getInstance(Context context) {
-        if(instance == null) {
-            instance = new LoginViewModel(context);
-        }
-
-        return instance;
-    }
 
     public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    private void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -41,5 +35,12 @@ public class LoginViewModel {
 
     public void logar(String email, String senha) {
         auth.login(email, senha);
+    }
+
+    public void registrar(String nome, String email, String senha){ auth.registrar(nome, email, senha);}
+
+    @Override
+    public void onUsuarioLoged(Usuario usuario) {
+        setUsuario(usuario);
     }
 }

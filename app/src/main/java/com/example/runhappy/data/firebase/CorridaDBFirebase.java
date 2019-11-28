@@ -1,5 +1,6 @@
 package com.example.runhappy.data.firebase;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.example.runhappy.data.CorridaDAO;
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.model.Usuario;
+import com.example.runhappy.ui.login.LoginViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -21,9 +23,17 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class CorridaDBFirebase implements CorridaDAO {
 
     private FirebaseFirestore firestore;
+    private List<Corrida> corridas;
 
-    public CorridaDBFirebase(){
+    private Context context;
+
+    public CorridaDBFirebase(Context context){
         this.firestore = FirebaseFirestore.getInstance();
+        this.corridas = new ArrayList<>();
+        this.context = context;
+
+        LoginViewModel vmLogin = new LoginViewModel(context);
+        findAllCorridas(vmLogin.idLogedUser());
     }
 
     @Override
@@ -66,16 +76,21 @@ public class CorridaDBFirebase implements CorridaDAO {
 
     @Override
     public List<Corrida> findAll(String id) {
+
+        return null;
+    }
+
+    private void findAllCorridas(String id){
         firestore.collection("corridas")
                 .whereEqualTo("corredor", id)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
+                        corridas.clear();
+                        corridas = queryDocumentSnapshots.toObjects(Corrida.class);
                     }
                 });
-        return null;
     }
 
     public void corridasDosSeguidores(){
@@ -92,5 +107,10 @@ public class CorridaDBFirebase implements CorridaDAO {
                     });
         }
 
+    }
+
+    @Override
+    public List<Corrida> getCorridas() {
+        return corridas;
     }
 }

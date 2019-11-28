@@ -24,6 +24,7 @@ public class UsuarioFormViewModel {
 
     private UsuarioAuth auth;
     private UsuarioDAO db;
+    private LoginViewModel vmLogin;
 
     public UsuarioFormViewModel(Activity tela, Context context) {
         this.nome = tela.findViewById(R.id.txtNome);
@@ -31,6 +32,7 @@ public class UsuarioFormViewModel {
         this.senha = tela.findViewById(R.id.txtSenha);
 
         this.context = context;
+        this.vmLogin = new LoginViewModel(context);
     }
 
     public void registrar() {
@@ -38,12 +40,11 @@ public class UsuarioFormViewModel {
         String email = this.email.getText().toString();
         String senha = this.senha.getText().toString();
 
-        auth = UsuarioFirebaseAuth.getInstance(context);
-        auth.registrar(nome, email, senha);
+        vmLogin.registrar(nome, email, senha);
     }
 
     public Usuario updateIdField(String id){
-        Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+        Usuario usuario = vmLogin.getUsuario();
         usuario.setId(id);
         return usuario;
     }
@@ -55,14 +56,14 @@ public class UsuarioFormViewModel {
 
 
     public void editarUsuario() {
-        Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+        Usuario usuario = vmLogin.getUsuario();
 
         Map<String, Object> param = new HashMap<>();
         param.put("nome", nome.getText().toString());
         param.put("email", email.getText().toString());
         param.put("senha", senha.getText().toString());
 
-        db = UsuarioDBFirebase.getInstance(context);
+        db = new UsuarioDBFirebase();
         db.editUsuario(usuario.getId(), param);
     }
 }

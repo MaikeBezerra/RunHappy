@@ -17,11 +17,11 @@ public class UsuarioViewModel {
     private UsuarioDAO dbSQLite;
     private UsuarioDAO dbFirebase;
 
-    public UsuarioViewModel(Activity activity, Context context) {
+    public UsuarioViewModel( Context context ) {
         SQLiteHandle handle = new SQLiteHandle(context);
 
         this.dbSQLite = new UsuarioDAOSQLite(handle);
-        this.dbFirebase = UsuarioDBFirebase.getInstance(context);
+        this.dbFirebase = new UsuarioDBFirebase();
     }
 
     public void adicionarUsuario(Usuario usuario){

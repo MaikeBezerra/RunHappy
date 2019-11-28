@@ -63,7 +63,7 @@ public class LoginPrincipalActivity extends AppCompatActivity {
         email = findViewById(R.id.username);
         senha = findViewById(R.id.password);
 
-        viewModel = new UsuarioViewModel(this, getApplicationContext());
+        viewModel = new UsuarioViewModel( getApplicationContext());
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -168,7 +168,7 @@ public class LoginPrincipalActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        LoginViewModel vmLogin = LoginViewModel.getInstance(getApplicationContext());
+        LoginViewModel vmLogin = new LoginViewModel(getApplicationContext());
         vmLogin.logar(email.getText().toString(), senha.getText().toString());
 
         if (vmLogin.getUsuario() != null) {

@@ -39,7 +39,7 @@ public class HeaderNavigationViewModel {
     }
 
     private void setNomeUsuario(){
-        Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+        Usuario usuario = new LoginViewModel(context).getUsuario();
 
         if(usuario != null) {
             nomeUsuario.setText(usuario.getNome());

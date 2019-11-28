@@ -66,7 +66,7 @@ public class CorridaViewModel {
     }
 
     public void salvar(){
-        usuarioView = new UsuarioViewModel(activity, activity.getApplicationContext());
+        usuarioView = new UsuarioViewModel(activity.getApplicationContext());
         Usuario usuario = usuarioView.findUsuarioByEmail("Test");
 
         Corrida corrida = new Corrida((double) activity.getIntent().getExtras().get("distancia"), (long) activity.getIntent().getExtras().get("tempo"),

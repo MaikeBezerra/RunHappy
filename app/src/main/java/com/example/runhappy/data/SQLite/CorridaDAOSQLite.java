@@ -100,4 +100,9 @@ public class CorridaDAOSQLite implements CorridaDAO {
         }
         return corridas;
     }
+
+    @Override
+    public List<Corrida> getCorridas() {
+        return null;
+    }
 }

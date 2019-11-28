@@ -60,6 +60,6 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
     }
 
     public List<Usuario> getUsuarios() {
-        return UsuarioDBFirebase.getInstance(context).getUsuarios();
+        return new UsuarioDBFirebase().getUsuarios();
     }
 }
