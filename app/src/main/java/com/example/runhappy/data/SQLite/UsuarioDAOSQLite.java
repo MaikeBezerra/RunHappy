@@ -36,20 +36,6 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
 
     }
 
-
-    @Override
-    public void adicionarSeguidor(Usuario usuario, String emailSeguido) {
-        SQLiteDatabase db = handle.getWritableDatabase();
-
-        Usuario seguido = findByEmail(emailSeguido);
-
-        ContentValues values = new ContentValues();
-        values.put("idSeguidor", usuario.getId());
-        values.put("idSeguido", seguido.getId());
-        db.insert("seguidores", null, values);
-        db.close();
-    }
-
     @Override
     public void editUsuario(String id, Map<String, Object> update) {
 
@@ -74,10 +60,10 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
     }
 
     @Override
-    public Usuario getUsuario(int usuarioId) {
+    public Usuario getUsuario(String usuarioId) {
         SQLiteDatabase db = handle.getReadableDatabase();
         Cursor cursor = db.query("usuario", new  String[] {"id", "nome", "email", "senha"},
-                "id = ?", new String[] {String.valueOf(usuarioId)}, null, null, null, null);
+                "id = ?", new String[] {usuarioId}, null, null, null, null);
 
         if (cursor.moveToFirst()){
             Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1),
@@ -128,7 +114,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         Cursor cursor = database.rawQuery("SELECT s FROM seguidores s WHERE s.idSeguidor = " + usuario.getId(), null);
         if (cursor.moveToFirst()) {
             do {
-                Usuario seguido = getUsuario(cursor.getInt(1));
+                Usuario seguido = getUsuario(cursor.getString(1));
                 if (seguido != null) { usuarios.add(seguido); }
             } while (cursor.moveToNext());
         }
