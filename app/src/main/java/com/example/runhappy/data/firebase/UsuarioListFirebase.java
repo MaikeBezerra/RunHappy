@@ -1,5 +1,7 @@
 package com.example.runhappy.data.firebase;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.runhappy.model.Seguido;
@@ -20,6 +22,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class UsuarioListFirebase {
 
@@ -98,6 +102,54 @@ public class UsuarioListFirebase {
 
                                 souSeguido.set(seguidor);
                             }
+                        }
+                    }
+                });
+
+    }
+
+    public void findAllSeguidores(final String id){
+        firestore.collection("seguidores")
+                .document(id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Seguidor seguidor = document.toObject(Seguidor.class);
+                                eventListener.onSetList(seguidor.getSeguidores());
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+
+    }
+
+    public void findAllSeguidos(final String id){
+        firestore.collection("seguidos")
+                .document(id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Seguido seguido = document.toObject(Seguido.class);
+                                eventListener.onSetList(seguido.getSeguidores());
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
                         }
                     }
                 });

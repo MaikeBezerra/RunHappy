@@ -11,13 +11,11 @@ public interface UsuarioDAO {
 
     void logar(String id);
 
-    void adicionarSeguidor(Usuario usuario, String emailSeguido);
-
     void editUsuario(String id, Map<String, Object> update);
 
     void deleteUsuario( int usuarioId);
 
-    Usuario getUsuario( int usuarioId);
+    Usuario getUsuario(String usuarioId);
 
     Usuario findByEmail(String email);
 

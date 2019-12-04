@@ -8,14 +8,15 @@ import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.presenter.OnLoginEventListener;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,22 +79,6 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
-    public void adicionarSeguidor(Usuario usuario, String idSeguido) {
-        Map<String, Object> seguir = new HashMap<>();
-        seguir.put("idSeguidor", usuario.getId());
-        seguir.put("idSeguido", idSeguido);
-
-        firestore.collection("seguidores")
-                .add(seguir)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-
-                    }
-                });
-    }
-
-    @Override
     public void editUsuario(final String id, Map<String, Object> update) {
         firestore.collection("usuarios")
                 .document(id)
@@ -119,7 +104,26 @@ public class UsuarioDBFirebase implements UsuarioDAO {
     }
 
     @Override
-    public Usuario getUsuario(int usuarioId) {
+    public Usuario getUsuario(String usuarioId) {
+        firestore.collection(COLECAO)
+                .document(usuarioId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
         return null;
     }
 
