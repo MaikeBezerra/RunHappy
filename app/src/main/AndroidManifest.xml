@@ -17,14 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.UsuarioListActivity"></activity>
+        <activity android:name=".activity.SeguindoActivity"></activity>
+        <activity android:name=".activity.SeguidoresActivity" />
+        <activity android:name=".activity.UsuarioListActivity" />
         <activity android:name=".activity.HistoricoActivity" />
         <activity android:name=".activity.EditarUsuarioActivity" />
         <activity android:name=".activity.ConfirmacaoFinalizarCorridaActivity" />
         <activity android:name=".activity.AtividadeCorridaActivity" />
         <activity android:name=".activity.LoginPrincipalActivity" />
         <activity android:name=".activity.FinalizarCorridaActivity" />
-        <activity android:name=".activity.FeedActivity"></activity>
+        <activity android:name=".activity.FeedActivity" />
         <activity android:name=".activity.Maps2Activity" />
         <activity android:name=".activity.InfoUsuarioActivity" />
         <!--

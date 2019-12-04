@@ -2,6 +2,7 @@ package com.example.runhappy.ui.usuario;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,12 +41,12 @@ public class UsuarioListView implements OnUsuarioListEventListener {
         firebase.findAll(vmLogin.idLogedUser());
     }
 
-    public void inicializaSeguidos(){
-        firebase.findAllSeguidos(vmLogin.idLogedUser());
+    public void inicializaSeguidos(String id){
+        firebase.findAllSeguidos(id);
     }
 
-    public void inicializaSeguidores(){
-        firebase.findAllSeguidores(vmLogin.idLogedUser());
+    public void inicializaSeguidores(String id){
+        firebase.findAllSeguidores(id);
     }
 
     public void seguir(Usuario seguido){
@@ -66,4 +67,5 @@ public class UsuarioListView implements OnUsuarioListEventListener {
         listAdapter = new UsuarioListAdapter(context, usuarios);
         recyclerView.setAdapter(listAdapter);
     }
+
 }
