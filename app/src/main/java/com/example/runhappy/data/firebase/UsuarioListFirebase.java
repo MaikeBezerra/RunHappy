@@ -57,8 +57,8 @@ public class UsuarioListFirebase {
 
     public void adicionarSeguidor(final Usuario usuario, final Usuario seguido) {
 
-        final DocumentReference quemEuSigo = firestore.collection("seguidores").document(usuario.getId());
-        final DocumentReference souSeguido = firestore.collection("seguidos").document(seguido.getId());
+        final DocumentReference quemEuSigo = firestore.collection("seguidos").document(usuario.getId());
+        final DocumentReference souSeguido = firestore.collection("seguidores").document(seguido.getId());
 
         quemEuSigo.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -108,7 +108,7 @@ public class UsuarioListFirebase {
 
     }
 
-    public void findAllSeguidores(final String id){
+    public void findAllSeguidores(String id){
         firestore.collection("seguidores")
                 .document(id)
                 .get()
@@ -132,7 +132,7 @@ public class UsuarioListFirebase {
 
     }
 
-    public void findAllSeguidos(final String id){
+    public void findAllSeguidos(String id){
         firestore.collection("seguidos")
                 .document(id)
                 .get()
