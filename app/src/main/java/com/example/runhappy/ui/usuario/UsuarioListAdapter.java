@@ -39,7 +39,7 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuarioListHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UsuarioListHolder holder, final int position) {
 
         holder.txtUsuarioNome.setText(usuarios.get(position).getNome());
 
@@ -50,12 +50,11 @@ public class UsuarioListAdapter extends RecyclerView.Adapter<UsuarioListHolder> 
             }
         });
 
-        final String id = usuarios.get(position).getId();
         ImageButton btnSeguir = holder.itemView.findViewById(R.id.img_seguir);
         btnSeguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listView.seguir(id);
+                listView.seguir(usuarios.get(position));
                 Toast.makeText(context, "Seguir", Toast.LENGTH_SHORT).show();
             }
         });

@@ -40,6 +40,8 @@ public class LoginViewModel implements OnLoginEventListener {
         return instance;
     }
 
+    public boolean isAuthenticated(){ return auth.isAutenticado(); }
+
     public Usuario getUsuario() {
         return usuario;
     }

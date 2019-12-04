@@ -26,7 +26,6 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         ContentValues values = new ContentValues();
         values.put("nome", usuario.getNome());
         values.put("email", usuario.getEmail());
-        values.put("senha", usuario.getSenha());
 
         database.insert("usuario", null, values);
         database.close();
@@ -62,7 +61,6 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         ContentValues values = new ContentValues();
         values.put("nome", usuario.getNome());
         values.put("email", usuario.getEmail());
-        values.put("senha", usuario.getSenha());
 
         database.update("usuario", values, " id = ?", new String[] { String.valueOf(usuario.getId()) });
         database.close();
@@ -83,7 +81,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
 
         if (cursor.moveToFirst()){
             Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1),
-                    cursor.getString(2), cursor.getString(3));
+                    cursor.getString(2));
             db.close();
             return usuario;
         }
@@ -97,7 +95,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
                 "email = ?", new String[] {email}, null, null, null, null);
         if (cursor.moveToFirst()){
             Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1),
-                    cursor.getString(2), cursor.getString(3));
+                    cursor.getString(2));
             db.close();
             return usuario;
         }
@@ -113,7 +111,7 @@ public class UsuarioDAOSQLite implements UsuarioDAO {
         if (cursor.moveToFirst()) {
             do {
                 Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1),
-                                        cursor.getString(2), cursor.getString(3));
+                                        cursor.getString(2));
                 usuarios.add(usuario);
             } while (cursor.moveToNext());
         }

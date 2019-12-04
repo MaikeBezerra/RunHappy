@@ -39,8 +39,8 @@ public class UsuarioListView implements OnUsuarioListEventListener {
         firebase.findAll(usuario.getId());
     }
 
-    public void seguir(String idSeguido){
-        firebase.adicionarSeguidor(vmLogin.getUsuario(), idSeguido);
+    public void seguir(Usuario seguido){
+        firebase.adicionarSeguidor(vmLogin.getUsuario(), seguido);
     }
 
     @Override

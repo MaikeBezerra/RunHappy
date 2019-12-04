@@ -8,21 +8,19 @@ public class Usuario implements Parcelable {
     private String id;
     private String nome;
     private String email;
-    private String senha;
 
     public Usuario(){
 
     }
 
-    public Usuario(String nome, String email, String senha){
+    public Usuario(String nome, String email){
         this();
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
     }
 
-    public Usuario(String id, String nome, String email, String senha){
-        this(nome, email, senha);
+    public Usuario(String id, String nome, String email){
+        this(nome, email);
         this.id = id;
     }
 
@@ -34,7 +32,6 @@ public class Usuario implements Parcelable {
         }
         nome = in.readString();
         email = in.readString();
-        senha = in.readString();
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -65,14 +62,6 @@ public class Usuario implements Parcelable {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getId() {
         return id;
     }
@@ -96,6 +85,5 @@ public class Usuario implements Parcelable {
         }
         parcel.writeString(nome);
         parcel.writeString(email);
-        parcel.writeString(senha);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import com.example.runhappy.R;
 import com.example.runhappy.UsuarioObserver;
-import com.example.runhappy.data.UsuarioDAO;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginFacebookView;
 import com.example.runhappy.ui.login.LoginViewModel;
@@ -17,7 +16,6 @@ import com.facebook.CallbackManager;
 
 public class LoginPrincipalActivity extends AppCompatActivity implements UsuarioObserver {
 
-    private UsuarioDAO usuarioDAO;
     private EditText email;
     private EditText senha;
     private CallbackManager callbackManager;
@@ -56,7 +54,7 @@ public class LoginPrincipalActivity extends AppCompatActivity implements Usuario
 
     @Override
     public void onChangeUsuario(Usuario usuario) {
-        if (vmLogin.getUsuario() != null) {
+        if (vmLogin.isAuthenticated()) {
             Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
             startActivity(intent);
             finish();

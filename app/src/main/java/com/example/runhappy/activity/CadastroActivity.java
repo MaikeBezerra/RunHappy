@@ -12,14 +12,12 @@ import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginFacebookView;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.example.runhappy.ui.usuario.UsuarioFormViewModel;
-import com.example.runhappy.ui.usuario.UsuarioViewModel;
 import com.facebook.CallbackManager;
 
 public class CadastroActivity extends AppCompatActivity implements UsuarioObserver {
 
     private LoginViewModel vmLogin;
-    private UsuarioViewModel viewModel;
-    private UsuarioFormViewModel formViewModel;
+    private UsuarioFormViewModel vmForm;
     private CallbackManager callbackManager;
     private LoginFacebookView vFacebook;
 
@@ -29,15 +27,16 @@ public class CadastroActivity extends AppCompatActivity implements UsuarioObserv
         setContentView(R.layout.activity_cadastro);
         setTitle("Cadastro");
 
-        viewModel = new UsuarioViewModel(getApplicationContext());
-        formViewModel = new UsuarioFormViewModel(this, getApplicationContext());
+        vmForm = new UsuarioFormViewModel(getApplicationContext());
+        vFacebook = new LoginFacebookView(getApplicationContext());
 
         vmLogin = LoginViewModel.getInstance(getApplicationContext());
         vmLogin.addObserver( this );
 
         callbackManager = CallbackManager.Factory.create();
         View rootView = findViewById(android.R.id.content);
-        vFacebook = new LoginFacebookView(getApplicationContext());
+
+        vmForm.inicialize(rootView);
         vFacebook.inicialize( rootView , callbackManager );
     }
 
@@ -49,12 +48,12 @@ public class CadastroActivity extends AppCompatActivity implements UsuarioObserv
     }
 
     public void cadastrar(View view) {
-        formViewModel.registrar();
+        vmForm.registrar();
     }
 
     @Override
     public void onChangeUsuario(Usuario usuario) {
-        if (vmLogin.getUsuario() != null) {
+        if (vmLogin.isAuthenticated()) {
             Intent intent = new Intent(getApplicationContext(), TelaInicialActivity.class);
             startActivity(intent);
             finish();
