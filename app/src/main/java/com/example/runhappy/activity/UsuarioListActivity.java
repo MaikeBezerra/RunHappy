@@ -20,6 +20,6 @@ public class UsuarioListActivity extends AppCompatActivity {
         View rootView = findViewById( android.R.id.content );
         listView = new UsuarioListView(getApplicationContext());
         listView.inicialize(rootView);
-
+        listView.inicializaFindAll();
     }
 }

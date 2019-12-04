@@ -34,9 +34,18 @@ public class UsuarioListView implements OnUsuarioListEventListener {
         recyclerView = view.findViewById(R.id.usuarioListView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
 
-        Usuario usuario = vmLogin.getUsuario();
-        firebase.findAll(usuario.getId());
+    public void inicializaFindAll(){
+        firebase.findAll(vmLogin.idLogedUser());
+    }
+
+    public void inicializaSeguidos(){
+        firebase.findAllSeguidos(vmLogin.idLogedUser());
+    }
+
+    public void inicializaSeguidores(){
+        firebase.findAllSeguidores(vmLogin.idLogedUser());
     }
 
     public void seguir(Usuario seguido){
