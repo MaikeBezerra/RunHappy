@@ -81,6 +81,7 @@ public class CorridaDBFirebase implements CorridaDAO {
     }
 
     private void findAllCorridas(String id){
+
         firestore.collection("corridas")
                 .whereEqualTo("corredor", id)
                 .get()

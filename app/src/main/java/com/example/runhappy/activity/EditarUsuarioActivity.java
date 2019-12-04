@@ -24,8 +24,11 @@ public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioO
         setContentView(R.layout.activity_editar_usuario);
         setTitle("Editar Usuario");
 
+        View rootView = findViewById(android.R.id.content);
+
         vmLogin = LoginViewModel.getInstance(getApplicationContext());
-        vmForm = new UsuarioFormViewModel(this, getApplicationContext());
+        vmForm = new UsuarioFormViewModel(getApplicationContext());
+        vmForm.inicialize(rootView);
 
         UsuarioChangeListener.getInstance().adicionaObeserver(this);
 

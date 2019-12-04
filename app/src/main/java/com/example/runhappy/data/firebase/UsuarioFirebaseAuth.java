@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -36,7 +37,7 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
     }
 
     @Override
-    public void registrar(final String nome, final String email, final String senha) {
+    public void registrar(final String nome, final String email, String senha) {
         auth.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -46,7 +47,7 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                             assert user != null;
                             String id = user.getUid();
 
-                            Usuario usuario = new Usuario(id, nome, email, senha);
+                            Usuario usuario = new Usuario(id, nome, email);
                             dbUsuario.addUsuario(usuario);
                             eventListener.onUsuarioLoged(usuario);
 
@@ -69,13 +70,13 @@ public class UsuarioFirebaseAuth implements UsuarioAuth {
                         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
                         firestore.collection("usuarios")
-                                .whereEqualTo("id", id)
+                                .document(id)
                                 .get()
-                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
-                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                        List<Usuario> usuario = queryDocumentSnapshots.toObjects(Usuario.class);
-                                        eventListener.onUsuarioLoged(usuario.get(0));
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        Usuario usuario = documentSnapshot.toObject(Usuario.class);
+                                        eventListener.onUsuarioLoged(usuario);
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {

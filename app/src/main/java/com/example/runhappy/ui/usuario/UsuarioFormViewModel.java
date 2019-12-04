@@ -2,6 +2,7 @@ package com.example.runhappy.ui.usuario;
 
 import android.app.Activity;;
 import android.content.Context;
+import android.view.View;
 import android.widget.EditText;
 
 import com.example.runhappy.R;
@@ -23,13 +24,15 @@ public class UsuarioFormViewModel {
     private UsuarioDAO db;
     private LoginViewModel vmLogin;
 
-    public UsuarioFormViewModel(Activity tela, Context context) {
-        this.nome = tela.findViewById(R.id.txtNome);
-        this.email = tela.findViewById(R.id.txtEmail);
-        this.senha = tela.findViewById(R.id.txtSenha);
-
+    public UsuarioFormViewModel(Context context) {
         this.context = context;
         this.vmLogin = LoginViewModel.getInstance(context);
+    }
+
+    public void inicialize(View view){
+        this.nome = view.findViewById(R.id.txtNome);
+        this.email = view.findViewById(R.id.txtEmail);
+        this.senha = view.findViewById(R.id.txtSenha);
     }
 
     public void registrar() {

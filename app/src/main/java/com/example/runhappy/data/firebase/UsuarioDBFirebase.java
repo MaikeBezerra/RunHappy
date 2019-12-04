@@ -40,18 +40,18 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public void addUsuario(Usuario usuario) {
-        firestore.collection(COLECAO)
-                .add(usuario)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        firestore.collection(COLECAO).document(usuario.getId())
+                .set(usuario)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.i(TAG, "Usuario adicionado");
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Usuario Cadastrado com Sucesso!!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG , "Error");
+                        Log.w(TAG, "Error ao cadastrar", e);
                     }
                 });
 
