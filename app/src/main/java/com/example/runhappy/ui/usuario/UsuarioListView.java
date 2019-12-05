@@ -2,7 +2,6 @@ package com.example.runhappy.ui.usuario;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.AdapterView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
