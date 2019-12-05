@@ -49,7 +49,8 @@
                     android:padding="5dp"
                     android:text="Seguidores"
                     android:textAlignment="center"
-                    android:textColor="#020000" />
+                    android:textColor="#020000"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -63,7 +64,8 @@
                     android:padding="5dp"
                     android:text="Seguindo"
                     android:textAlignment="center"
-                    android:textColor="#020000" />
+                    android:textColor="#020000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -84,9 +86,10 @@
                     android:background="@drawable/rounded_textview"
                     android:onClick="verHistorico"
                     android:padding="5dp"
-                    android:text="Histório"
+                    android:text="Histórico"
                     android:textAlignment="center"
-                    android:textColor="#020000" />
+                    android:textColor="#020000"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,8 +106,11 @@
                     android:layout_height="30dp"
                     android:background="@drawable/toggle_selector_btn_seguir"
 
+                    android:onClick="seguirEdeixarDeSeguir"
                     android:text="Seguir"
                     android:textColor="#FFFFFF"
+                    android:textOff="Seguir"
+                    android:textOn="Deixar de seguir"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -119,11 +125,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/infoNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nome"
-            android:textColor="#020000" />
+            android:textColor="#020000"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView23"
@@ -131,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Descricao"
-            android:textColor="#020000" />
+            android:textColor="#020000"
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

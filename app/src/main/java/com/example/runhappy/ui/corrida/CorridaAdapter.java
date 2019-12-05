@@ -24,6 +24,7 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
     @Override
     public CorridaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
         View view = layoutInflater.inflate(R.layout.corrida_recycler, parent, false);
         CorridaViewHolder corridaViewHolder = new CorridaViewHolder(view);
 

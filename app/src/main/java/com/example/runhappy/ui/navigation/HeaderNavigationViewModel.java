@@ -8,11 +8,14 @@ import android.widget.TextView;
 
 import com.example.runhappy.activity.EditarUsuarioActivity;
 import com.example.runhappy.R;
+import com.example.runhappy.activity.InfoUsuarioActivity;
 import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HeaderNavigationViewModel {
 
@@ -21,6 +24,8 @@ public class HeaderNavigationViewModel {
 
     private NavigationView navigation;
     private TextView nomeUsuario;
+    private CircleImageView fotoUsuario;
+    private TextView infoNomeUsuario;
 
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
@@ -34,6 +39,8 @@ public class HeaderNavigationViewModel {
     public void inicializeParam(){
         View headerView = navigation.getHeaderView(0);
         nomeUsuario = headerView.findViewById(R.id.txtNomeUsuario);
+        fotoUsuario = headerView.findViewById(R.id.imagemUsuario);
+        verPerfil();
         setNomeUsuario();
 
     }
@@ -52,5 +59,23 @@ public class HeaderNavigationViewModel {
             });
         }
 
+    }
+
+    private void verPerfil(){
+        final Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+
+
+        if(usuario != null) {
+
+            fotoUsuario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent infoUsuario = new Intent(context, InfoUsuarioActivity.class);
+                    infoUsuario.putExtra("nomeUsuario", usuario.getNome());
+                    infoUsuario.putExtra("idBusca", usuario.getId());
+                    activity.startActivity(infoUsuario);
+                }
+            });
+        }
     }
 }
