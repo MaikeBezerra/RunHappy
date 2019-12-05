@@ -16,8 +16,6 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalizar_corrida);
-
-
     }
 
     public void cancelar(View view){
@@ -25,8 +23,6 @@ public class FinalizarCorridaActivity extends AppCompatActivity {
     }
 
     public void concluir(View view){
-
-
 
         Intent confirmacaoCorrida = new Intent(this, ConfirmacaoFinalizarCorridaActivity.class);
         startActivity(confirmacaoCorrida);

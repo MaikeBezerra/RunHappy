@@ -20,5 +20,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCorrida"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/corrida_recycler"/>
 </LinearLayout>

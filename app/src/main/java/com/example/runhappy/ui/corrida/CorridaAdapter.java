@@ -23,12 +23,13 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
     @NonNull
     @Override
     public CorridaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        //LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.corrida_recycler, parent, false);
-        CorridaViewHolder corridaViewHolder = new CorridaViewHolder(view);
+        View view = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.corrida_recycler, parent, false);
 
-        return corridaViewHolder;
+        return new CorridaViewHolder(view);
     }
 
     @Override

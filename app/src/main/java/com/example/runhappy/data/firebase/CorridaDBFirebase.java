@@ -39,6 +39,7 @@ public class CorridaDBFirebase implements CorridaDAO {
     @Override
     public void adicionarCorrida(Corrida corrida) {
         firestore.collection("corridas")
+
                 .add(corrida)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
