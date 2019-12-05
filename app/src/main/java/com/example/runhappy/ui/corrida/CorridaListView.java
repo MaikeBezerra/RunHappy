@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
 import com.example.runhappy.data.firebase.CorridaListFirebase;
+import com.example.runhappy.data.firebase.FeedListFirebase;
 import com.example.runhappy.model.Corrida;
 import com.example.runhappy.presenter.OnCorridaListEventListener;
 import com.example.runhappy.ui.login.LoginViewModel;
@@ -22,12 +23,13 @@ public class CorridaListView implements OnCorridaListEventListener {
 
     private List<Corrida> corridas;
     private LoginViewModel vmLogin;
-    private CorridaListFirebase dbList;
+
+    private FeedListFirebase feedList;
 
     public CorridaListView(Context context){
         this.context = context;
         this.vmLogin = LoginViewModel.getInstance(context);
-        this.dbList = new CorridaListFirebase( this );
+        this.feedList = new FeedListFirebase(this);
     }
 
     public void inicialize(View view){
@@ -37,7 +39,7 @@ public class CorridaListView implements OnCorridaListEventListener {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         String id = vmLogin.idLogedUser();
-        dbList.findAllByCorredor(id);
+        feedList.findMyFeeds(id);
 
     }
 
