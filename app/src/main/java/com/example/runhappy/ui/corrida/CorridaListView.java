@@ -37,10 +37,16 @@ public class CorridaListView implements OnCorridaListEventListener {
         recyclerView = view.findViewById(R.id.rvCorrida);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
 
+    public void loadHistorico(){
         String id = vmLogin.idLogedUser();
         feedList.findMyFeeds(id);
+    }
 
+    public void loadFeed(){
+        String id = vmLogin.idLogedUser();
+        feedList.findFeedsSeguidos(id);
     }
 
     @Override
