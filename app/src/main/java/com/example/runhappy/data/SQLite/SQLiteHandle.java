@@ -20,10 +20,12 @@ public class SQLiteHandle extends SQLiteOpenHelper {
                 "ritmo INTEGER, idUsuario INTEGER, FOREIGN KEY (idUsuario) REFERENCES usuario(id))";
         String seguidoresUsuario = "CREATE TABLE seguidores (idSeguidor INTEGER PRIMARY KEY, " +
                 "idSeguido INTEGER, FOREIGN KEY (idSeguido) REFERENCES usuario(id))";
+        String curtirPost = "CREATE TABLE curtidas_posts (id String PRIMARY KEY)";
 
-        db.execSQL(createUsuario);
-        db.execSQL(createCorrida);
-        db.execSQL(seguidoresUsuario);
+//        db.execSQL(createUsuario);
+//        db.execSQL(createCorrida);
+//        db.execSQL(seguidoresUsuario);
+        db.execSQL(curtirPost);
     }
 
     @Override
@@ -32,9 +34,11 @@ public class SQLiteHandle extends SQLiteOpenHelper {
         String dropUsuario = "DROP TABLE IF EXISTS usuario";
         String dropCorrida = "DROP TABLE IF EXISTS corrida";
         String dropSeguidores = "DROP TABLE IF EXISTS seguidores";
+        String dropCurtidas = "DROP TABLE IF EXISTS curtidas_posts";
         db.execSQL(dropUsuario);
         db.execSQL(dropCorrida);
         db.execSQL(dropSeguidores);
+        db.execSQL(dropCurtidas);
         onCreate(db);
 //        }
     }

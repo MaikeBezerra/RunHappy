@@ -51,7 +51,7 @@ public class FeedListFirebase {
                             if (document.exists()) {
                                 Feed feed = document.toObject(Feed.class);
                                 eventListener.onSetList(feed.getCorridas());
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                             } else {
                                 Log.d(TAG, "No such document");
                             }
