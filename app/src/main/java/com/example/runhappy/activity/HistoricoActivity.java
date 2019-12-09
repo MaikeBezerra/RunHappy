@@ -22,6 +22,6 @@ public class HistoricoActivity extends AppCompatActivity {
         View rootView = findViewById( android.R.id.content );
 
         listView.inicialize( rootView );
-
+        listView.loadHistorico();
     }
 }
