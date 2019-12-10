@@ -18,6 +18,9 @@ import com.example.runhappy.model.Usuario;
 import com.example.runhappy.ui.login.LoginFacebookView;
 import com.example.runhappy.ui.login.LoginViewModel;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 
 public class LoginPrincipalActivity extends AppCompatActivity implements UsuarioObserver {
 

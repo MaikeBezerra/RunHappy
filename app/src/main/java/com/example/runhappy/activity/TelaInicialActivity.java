@@ -84,10 +84,10 @@ public class TelaInicialActivity extends AppCompatActivity{
         setTitle("Run Happy");
 
 
+        System.out.println("aqui 1");
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        System.out.println("aqui 1");
 
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this,  new OnSuccessListener<Location>() {
