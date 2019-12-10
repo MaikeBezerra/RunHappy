@@ -7,18 +7,20 @@ public class Corrida {
     private long tempo;
     private double ritmoMedio;
     private String corredor;
+    private String descricao;
 
     public Corrida(){}
 
-    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor) {
+    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor, String descricao) {
         this.distancia = distancia;
         this.tempo = tempo;
         this.ritmoMedio = ritmoMedio;
         this.corredor = corredor;
+        this.descricao = descricao;
     }
 
-    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor) {
-        this(distancia, tempo, ritmoMedio, corredor);
+    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor, String descricao) {
+        this(distancia, tempo, ritmoMedio, corredor, descricao);
         this.id = id;
     }
 
@@ -60,6 +62,14 @@ public class Corrida {
 
     public void setCorredor(String corredor) {
         this.corredor = corredor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getDistanciaFormatada(){

@@ -11,7 +11,11 @@
 
     <string name="nome_usuario">Nome do Usuario</string>
 
-
     <string name="imagem_usuario_descricao">Imagem do usuario</string>
     <string name="botao_seguir">Seguir</string>
+
+    <string name="title_finalizar_corrida">Finalizar Corrida</string>
+
+    <string name="msg_parabens">Parabéns por mais uma corrida concluída com sucesso!</string>
+    <string name="pago">Tá pago</string>
 </resources>

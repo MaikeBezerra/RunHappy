@@ -93,8 +93,9 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
 
             vmLogin = LoginViewModel.getInstance(getApplicationContext());
             String idCorredor = vmLogin.idLogedUser();
-            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor);
-            //db.adicionarCorrida(corrida);
+            String descricao  = data.getExtras().getString("descricao", "");
+            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor, descricao);
+
             dbFeed.createFeed(corrida);
             finish();
         } else if(requestCode == Constantes.REQUEST_CONCLUIR && resultCode == Constantes.REQUEST_CANCELAR){

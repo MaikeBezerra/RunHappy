@@ -35,42 +35,4 @@ public class CorridaViewModel {
         SQLiteHandle handle = new SQLiteHandle(activity.getApplicationContext());
         corridaDAO = new CorridaDAOSQLite(handle);
     }
-
-    public void setValuesAttributes(){
-
-        if(!activity.getIntent().getExtras().isEmpty()) {
-            String distancia = activity.getIntent().getExtras().get("distancia").toString();
-            double auxDistancia = (double) activity.getIntent().getExtras().get("distancia");
-
-            long auxTempo = (long) activity.getIntent().getExtras().get("tempo");
-            int horas = (int) Math.floor((auxTempo / (3.6 * 1000000)));
-            auxTempo -= horas;
-            int minutos = (int) Math.floor((((auxTempo) / 60000)));
-            auxTempo -= minutos;
-            int segundos = (int) Math.floor((auxTempo - minutos) / 1000);
-            auxTempo -= segundos;
-
-            String tempo = horas + "h" + " " + minutos + "min" + " " + segundos + "s";
-            String ritmoMedio = (String) activity.getIntent().getExtras().get("ritmoMedio").toString();
-
-            if (auxDistancia > 1000) {
-                distancia = (int) Math.floor(auxDistancia / 1000) + "km" + " " + (int) (auxDistancia % 1000) + "m";
-            } else {
-                distancia = String.valueOf((int) (auxDistancia % 1000) + "m");
-            }
-
-            this.distancia.setText(distancia);
-            this.tempo.setText(tempo);
-            this.ritmoMedio.setText(ritmoMedio);
-        }
-    }
-
-    public void salvar(){
-        usuarioView = new UsuarioViewModel(activity.getApplicationContext());
-        Usuario usuario = usuarioView.findUsuarioByEmail("Test");
-
-        Corrida corrida = new Corrida((double) activity.getIntent().getExtras().get("distancia"), (long) activity.getIntent().getExtras().get("tempo"),
-                (double) activity.getIntent().getExtras().get("ritmoMedio"), usuario.getId());
-        corridaDAO.adicionarCorrida(corrida);
-    }
 }

@@ -51,7 +51,7 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
             holder.tvDistancia.setText(corrida.getDistanciaFormatada());
             holder.tvTempo.setText(corrida.getTempoFormatado());
             holder.tvRitmo.setText(corrida.getRitmoMedioFormatado());
-            holder.tvIdCorrida.setText(String.valueOf(corrida.getId()));
+            holder.tvIdCorrida.setText(String.valueOf(corrida.getDescricao()));
         }
 
         holder.button.setChecked(sqLite.isCurtido(corrida.getId()));
