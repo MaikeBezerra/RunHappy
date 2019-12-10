@@ -1,10 +1,15 @@
 package com.example.runhappy.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -37,6 +42,7 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
 //        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 //
 //        System.out.println("aqui 1");
@@ -58,6 +64,9 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 //                        System.out.println("failure aqui");
 //                    }
 //                });
+
+
+
 
 
 
@@ -117,18 +126,20 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
 
 
 
-        mMap.addMarker(new MarkerOptions().position(localizacao).title("Marker in Quixada"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(localizacao));
-        float zoomLevel = 10.0f; //This goes up to 21
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacao, zoomLevel));
+//        mMap.addMarker(new MarkerOptions().position(localizacao).title("Marker in Quixada"));
+//        //mMap.moveCamera(CameraUpdateFactory.newLatLng(localizacao));
+//        float zoomLevel = 10.0f; //This goes up to 21
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacao, zoomLevel));
     }
 
     public static void atualizar(LatLng location){
         ultimaLocalizacao = location;
         mMap.addMarker(new MarkerOptions().position(ultimaLocalizacao).title("Você"));
-        float zoomLevel = 10.0f; //This goes up to 21
+        float zoomLevel = 15.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ultimaLocalizacao, zoomLevel));
     }
+
+
 
 
 }
