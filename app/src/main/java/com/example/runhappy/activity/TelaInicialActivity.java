@@ -1,11 +1,14 @@
 package com.example.runhappy.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.runhappy.R;
@@ -23,6 +26,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +36,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -73,6 +79,7 @@ public class TelaInicialActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_tela_inicial);
         setTitle("Run Happy");
 
@@ -82,7 +89,28 @@ public class TelaInicialActivity extends AppCompatActivity{
 
         System.out.println("aqui 1");
 
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this,  new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            ultimaLocalizacao = new LatLng(location.getLatitude(), location.getLongitude());
+                            MapsActivity.atualizar(ultimaLocalizacao);
 
+                            System.out.println("aqui 2");
+                        }else{
+                            System.out.println("location null");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("failure aqui");
+
+                    }
+                });
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -161,29 +189,24 @@ public class TelaInicialActivity extends AppCompatActivity{
         HeaderNavigationViewModel headerView = new HeaderNavigationViewModel(this, getApplicationContext(), navigation);
         headerView.inicializeParam();
 
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this,  new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            ultimaLocalizacao = new LatLng(location.getLatitude(), location.getLongitude());
-                            MapsActivity.atualizar(ultimaLocalizacao);
 
-                            System.out.println("aqui 2");
-                        }else{
-                            System.out.println("location null");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println("failure aqui");
 
-                    }
-                });
+
+//        fusedLocationClient.getLastLocation().addOnCompleteListener(this, new OnCompleteListener<Location>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Location> task) {
+//                if (task.isSuccessful() && task.getResult() != null){
+//                    System.out.println("aqui 5");
+//                    MapsActivity.atualizar(new LatLng(task.getResult().getLatitude(), task.getResult().getLongitude()));
+//                }else{
+//                    System.out.println("falha por aqui" + task.getResult().getLatitude());
+//                }
+//
+//            }
+//        });
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
