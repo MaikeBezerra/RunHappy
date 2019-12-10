@@ -21,5 +21,6 @@ public class UsuarioListActivity extends AppCompatActivity {
         listView = new UsuarioListView(getApplicationContext());
         listView.inicialize(rootView);
         listView.inicializaFindAll();
+
     }
 }

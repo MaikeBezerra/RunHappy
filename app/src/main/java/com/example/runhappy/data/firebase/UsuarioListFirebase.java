@@ -55,6 +55,19 @@ public class UsuarioListFirebase {
 
     }
 
+    public void findAllBySearch(String busca){
+        firestore.collection("usuarios")
+                .whereArrayContains("nome", busca)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<Usuario> usuarios = queryDocumentSnapshots.toObjects(Usuario.class);
+                        eventListener.onSetList(usuarios);
+                    }
+                });
+    }
+
     public void adicionarSeguidor(final Usuario usuario, final Usuario seguido) {
 
         final DocumentReference quemEuSigo = firestore.collection("seguidos").document(usuario.getId());
