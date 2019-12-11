@@ -80,7 +80,7 @@ public class UsuarioDBFirebase implements UsuarioDAO {
 
     @Override
     public void editUsuario(final String id, Map<String, Object> update) {
-        firestore.collection("usuarios")
+        firestore.collection(COLECAO)
                 .document(id)
                 .update(update)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

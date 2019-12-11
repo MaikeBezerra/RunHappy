@@ -2,6 +2,7 @@ package com.example.runhappy.ui.usuario;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ public class UsuarioListView implements OnUsuarioListEventListener {
     private Context context;
     private RecyclerView recyclerView;
     private UsuarioListAdapter listAdapter;
+    private EditText search;
 
     private List<Usuario> usuarios;
     private LoginViewModel vmLogin;
@@ -34,6 +36,7 @@ public class UsuarioListView implements OnUsuarioListEventListener {
         recyclerView = view.findViewById(R.id.usuarioListView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
+
     }
 
     public void inicializaFindAll(){

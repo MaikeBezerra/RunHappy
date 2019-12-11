@@ -78,7 +78,7 @@ public class FeedFirebase {
                                 corridaMap.put("tempo", corrida.getTempo());
                                 corridaMap.put("ritmoMedioFormatado", corrida.getRitmoMedioFormatado());
                                 corridaMap.put("tempoFormatado", corrida.getTempoFormatado());
-
+                                corridaMap.put("descricao", corrida.getDescricao());
 
                                 reference.update("corridas", FieldValue.arrayUnion(corridaMap));
                             } else {

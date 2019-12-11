@@ -49,7 +49,7 @@ public class EditarUsuarioActivity extends AppCompatActivity implements UsuarioO
 //        telaInicial.putExtra("email", usuario.getEmail());
 //        startActivity(telaInicial);
 //
-//        finish();
+        finish();
         Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
     }
 
