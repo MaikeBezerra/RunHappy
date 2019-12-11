@@ -25,10 +25,6 @@ public class HeaderNavigationViewModel {
     private NavigationView navigation;
     private TextView nomeUsuario;
     private CircleImageView fotoUsuario;
-    private TextView infoNomeUsuario;
-
-    private FirebaseAuth auth;
-    private FirebaseFirestore firestore;
 
     public HeaderNavigationViewModel(Activity activity, Context context, NavigationView navigation){
         this.navigation = navigation;
@@ -46,15 +42,14 @@ public class HeaderNavigationViewModel {
     }
 
     private void setNomeUsuario(){
-        Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
+        final Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
 
         if(usuario != null) {
             nomeUsuario.setText(usuario.getNome());
             nomeUsuario.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent editarUsuario = new Intent(context, EditarUsuarioActivity.class);
-                    activity.startActivity(editarUsuario);
+                    startInfoUsuarioPage(usuario);
                 }
             });
         }
@@ -64,18 +59,22 @@ public class HeaderNavigationViewModel {
     private void verPerfil(){
         final Usuario usuario = LoginViewModel.getInstance(context).getUsuario();
 
-
         if(usuario != null) {
-
             fotoUsuario.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent infoUsuario = new Intent(context, InfoUsuarioActivity.class);
-                    infoUsuario.putExtra("nomeUsuario", usuario.getNome());
-                    infoUsuario.putExtra("idBusca", usuario.getId());
-                    activity.startActivity(infoUsuario);
+                    startInfoUsuarioPage(usuario);
                 }
             });
         }
+    }
+
+    private void startInfoUsuarioPage(Usuario usuario){
+        Intent infoUsuario = new Intent(context, InfoUsuarioActivity.class);
+        infoUsuario.putExtra("idBusca", usuario.getId());
+        infoUsuario.putExtra("nomeUsuario", usuario.getNome());
+        infoUsuario.putExtra("idUsuario", usuario.getId());
+        infoUsuario.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(infoUsuario);
     }
 }

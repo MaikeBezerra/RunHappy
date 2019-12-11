@@ -40,7 +40,6 @@ public class LoginPrincipalActivity extends AppCompatActivity implements Usuario
             checkPermission();
         }
 
-
         email = findViewById(R.id.username);
         senha = findViewById(R.id.password);
 

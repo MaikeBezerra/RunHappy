@@ -53,7 +53,6 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
     private List<Location> locations;
     private LatLng ultimaLocalizacao;
 
-    //private CorridaDAO db;
     private FeedFirebase dbFeed;
 
     private LoginViewModel vmLogin;
@@ -205,7 +204,6 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         };
 
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
-
 
     }
 

@@ -21,7 +21,7 @@ public class InfoUsuarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_usuario);
-        nomeUsuario = (TextView) findViewById(R.id.infoNome);
+        nomeUsuario = findViewById(R.id.infoNome);
         nomeUsuario.setText(getIntent().getExtras().get("nomeUsuario").toString());
         idBusca = getIntent().getExtras().get("idBusca").toString();
     }

@@ -1,6 +1,5 @@
 package com.example.runhappy.ui.usuario;
 
-import android.app.Activity;;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
