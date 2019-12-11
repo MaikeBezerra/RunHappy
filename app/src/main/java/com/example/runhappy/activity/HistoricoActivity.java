@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.runhappy.R;
 
@@ -18,10 +19,14 @@ public class HistoricoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico);
 
+
         listView = new CorridaListView(getApplicationContext());
         View rootView = findViewById( android.R.id.content );
 
         listView.inicialize( rootView );
         listView.loadHistorico();
+
+
     }
+
 }

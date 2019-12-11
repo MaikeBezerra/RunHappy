@@ -1,5 +1,9 @@
 package com.example.runhappy.ui.corrida;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.location.Location;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runhappy.R;
+import com.example.runhappy.activity.TrajetoActivity;
 import com.example.runhappy.data.SQLite.PostSQLite;
 import com.example.runhappy.data.SQLite.SQLiteHandle;
 import com.example.runhappy.model.Corrida;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
 
     private List<Corrida> corridas;
     private PostSQLite sqLite;
+    List<Location> locations;
 
     public CorridaAdapter(List<Corrida> corridas){
         this.corridas = corridas;
@@ -54,6 +63,16 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
             holder.tvIdCorrida.setText(String.valueOf(corrida.getDescricao()));
         }
 
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verTrajeto(corrida.getLocations());
+
+            }
+        });
+
+
+
         holder.button.setChecked(sqLite.isCurtido(corrida.getId()));
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,5 +89,12 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaViewHolder> {
     @Override
     public int getItemCount() {
         return corridas.size();
+    }
+
+    public void verTrajeto(List<com.google.android.gms.maps.model.LatLng> locations){
+        Intent intent = new Intent(getApplicationContext() ,TrajetoActivity.class);
+        intent.putParcelableArrayListExtra("locations", (ArrayList<? extends Parcelable>) locations);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
     }
 }
