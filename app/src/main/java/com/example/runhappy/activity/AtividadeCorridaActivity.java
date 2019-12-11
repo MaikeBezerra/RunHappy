@@ -52,6 +52,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
     private double ritmoMedio;
     private List<Location> locations;
     private LatLng ultimaLocalizacao;
+    List<LatLng> latLngs;
 
     private FeedFirebase dbFeed;
 
@@ -64,9 +65,12 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atividade_corrida);
 
-        Intent corridaService = new Intent(AtividadeCorridaActivity.this, CorridaService.class);
-        startService(corridaService);
-        
+//        Intent corridaService = new Intent(AtividadeCorridaActivity.this, CorridaService.class);
+//        startService(corridaService);
+
+        atualizarLocalizacao();
+
+        latLngs = new ArrayList<>();
 
         //db = new CorridaDBFirebase(getApplicationContext());
         dbFeed = new FeedFirebase();
@@ -120,7 +124,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
             vmLogin = LoginViewModel.getInstance(getApplicationContext());
             String idCorredor = vmLogin.idLogedUser();
             String descricao  = data.getExtras().getString("descricao", "");
-            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor, descricao, locations);
+            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor, descricao, latLngs);
 
             dbFeed.createFeed(corrida);
             finish();
@@ -199,6 +203,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
                     System.out.println("latitude atual: "+location.getLatitude());
                     Log.i("teste", "latitude atual: "+location.getLatitude());
                     Log.i("teste2", ""+locations.size());
+                    latLngs.add( new LatLng(location.getLatitude(), location.getLongitude()));
                 }
             }
         };

@@ -3,6 +3,7 @@ package com.example.runhappy.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,10 +24,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 public class MapsActivity extends SupportMapFragment implements OnMapReadyCallback{
@@ -38,9 +43,12 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     private FusedLocationProviderClient fusedLocationClient;
     private static LatLng ultimaLocalizacao;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
 
 //        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -140,6 +148,22 @@ public class MapsActivity extends SupportMapFragment implements OnMapReadyCallba
     }
 
 
+    public void desenharTrajeto(List<LatLng> latLngs){
+
+        if (latLngs != null && latLngs.size() > 0) {
+            LatLng latLng = latLngs.get(0);
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Início"));
+        }
+
+        float zoomLevel = 15.0f; //This goes up to 21
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ultimaLocalizacao, zoomLevel));
+        System.out.println("entrou no desenhar");
+
+        Polyline line = mMap.addPolyline(new PolylineOptions()
+                .addAll(latLngs)
+                .width(5)
+                .color(Color.GREEN));
+    }
 
 
 }

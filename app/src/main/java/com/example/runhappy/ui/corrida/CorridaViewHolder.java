@@ -1,6 +1,7 @@
 package com.example.runhappy.ui.corrida;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -15,6 +16,7 @@ public class CorridaViewHolder extends RecyclerView.ViewHolder {
     public TextView tvDistancia;
     public TextView tvTempo;
     public TextView tvRitmo;
+    public ImageView imageView;
 
     ToggleButton button;
 
@@ -25,7 +27,7 @@ public class CorridaViewHolder extends RecyclerView.ViewHolder {
         tvTempo =  itemView.findViewById(R.id.textViewTempo);
         tvRitmo = itemView.findViewById(R.id.textViewRitmo);
         tvIdCorrida = itemView.findViewById(R.id.textViewIdCorrida);
-
+        imageView = itemView.findViewById(R.id.imageViewTrajeto);
         button = itemView.findViewById(R.id.btnCurtir);
     }
 }

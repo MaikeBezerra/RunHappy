@@ -2,6 +2,8 @@ package com.example.runhappy.model;
 
 import android.location.Location;
 
+import com.google.type.LatLng;
+
 import java.util.List;
 
 public class Corrida {
@@ -12,28 +14,28 @@ public class Corrida {
     private double ritmoMedio;
     private String corredor;
     private String descricao;
-    private List<Location> locations;
+    private List<com.google.android.gms.maps.model.LatLng> locations;
 
     public Corrida(){}
 
-    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<Location> locations) {
+    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<com.google.android.gms.maps.model.LatLng> latLng) {
         this.distancia = distancia;
         this.tempo = tempo;
         this.ritmoMedio = ritmoMedio;
         this.corredor = corredor;
         this.descricao = descricao;
-        this.locations = locations;
+        this.locations = latLng;
     }
 
-    public List<Location> getLocations() {
+    public List<com.google.android.gms.maps.model.LatLng> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<Location> locations) {
+    public void setLocations(List<com.google.android.gms.maps.model.LatLng> locations) {
         this.locations = locations;
     }
 
-    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<Location> locations) {
+    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<com.google.android.gms.maps.model.LatLng> locations) {
         this(distancia, tempo, ritmoMedio, corredor, descricao, locations);
         this.id = id;
     }
