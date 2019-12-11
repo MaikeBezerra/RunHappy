@@ -120,7 +120,7 @@ public class AtividadeCorridaActivity extends AppCompatActivity {
             vmLogin = LoginViewModel.getInstance(getApplicationContext());
             String idCorredor = vmLogin.idLogedUser();
             String descricao  = data.getExtras().getString("descricao", "");
-            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor, descricao);
+            Corrida corrida = new Corrida(UUID.randomUUID().toString(), distancia, tempo, ritmoMedio, idCorredor, descricao, locations);
 
             dbFeed.createFeed(corrida);
             finish();

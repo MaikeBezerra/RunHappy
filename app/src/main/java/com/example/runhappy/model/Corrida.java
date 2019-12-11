@@ -1,5 +1,9 @@
 package com.example.runhappy.model;
 
+import android.location.Location;
+
+import java.util.List;
+
 public class Corrida {
 
     private String id;
@@ -8,19 +12,29 @@ public class Corrida {
     private double ritmoMedio;
     private String corredor;
     private String descricao;
+    private List<Location> locations;
 
     public Corrida(){}
 
-    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor, String descricao) {
+    public Corrida(double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<Location> locations) {
         this.distancia = distancia;
         this.tempo = tempo;
         this.ritmoMedio = ritmoMedio;
         this.corredor = corredor;
         this.descricao = descricao;
+        this.locations = locations;
     }
 
-    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor, String descricao) {
-        this(distancia, tempo, ritmoMedio, corredor, descricao);
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public Corrida(String id, double distancia, long tempo, double ritmoMedio, String corredor, String descricao, List<Location> locations) {
+        this(distancia, tempo, ritmoMedio, corredor, descricao, locations);
         this.id = id;
     }
 
